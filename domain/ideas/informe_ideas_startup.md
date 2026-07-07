@@ -9,7 +9,7 @@ Este informe presenta 10 ideas de emprendimiento enfocadas en la **simplicidad t
 
 ---
 
-## 1. "UniNotes" (Marketplace de apuntes universitarios)
+## 1. "Menu QR Express" (Menú digital para restaurantes)
 *   **La Idea:** Web donde los mejores estudiantes suben sus apuntes en PDF. Otros pagan $3/mes por acceso total a los documentos.
 *   **¿Por qué es una Startup?** 
     *   *Escalabilidad:* Un mismo PDF subido una vez puede ser descargado por miles de personas sin costo extra para ti.
