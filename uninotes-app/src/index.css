@@ -5,11 +5,11 @@
   --bg-secondary: #0b1120;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
+  --primary: #f97316;
+  --primary-hover: #ea580c;
   --secondary: #1e293b;
-  --gradient-start: #6366f1;
-  --gradient-end: #a855f7;
+  --gradient-start: #fb923c;
+  --gradient-end: #ea580c;
 }
 
 * {
@@ -150,14 +150,14 @@ h2 {
   margin-top: 1rem;
 }
 
-.btn-download {
-  background: rgba(99, 102, 241, 0.15);
-  color: #a5b4fc;
-  border: 1px solid rgba(99, 102, 241, 0.3);
+.btn-action {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fdba74;
+  border: 1px solid rgba(249, 115, 22, 0.3);
   width: 100%;
 }
-.btn-download:hover {
-  background: rgba(99, 102, 241, 0.25);
+.btn-action:hover {
+  background: rgba(249, 115, 22, 0.25);
   transform: translateY(-1px);
 }
 
@@ -278,15 +278,21 @@ h2 {
 .yellow { background: #ffbd2e; }
 .green { background: #27c93f; }
 
-.file-icon {
+.qr-container {
   margin-bottom: 1rem;
-  background: rgba(168, 85, 247, 0.1);
-  width: 48px;
-  height: 48px;
+  background: rgba(249, 115, 22, 0.1);
+  width: 90px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.phone-mockup {
+  text-align: center;
 }
 
 .card-body h3 {
