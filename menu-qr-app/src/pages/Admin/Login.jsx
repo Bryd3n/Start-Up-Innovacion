@@ -6,14 +6,36 @@ import '../../index.css';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Aquí más adelante conectaremos con el backend (ej. Supabase Auth o JWT)
-    // Por ahora, simulamos un inicio de sesión exitoso y redirigimos al dashboard
-    if (email && password) {
+    setError('');
+    
+    try {
+      const response = await fetch('http://localhost:3001/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al iniciar sesión');
+      }
+      
+      // Guardar el token en localStorage para mantener la sesión
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      
+      // Redirigir al dashboard
       navigate('/admin/dashboard');
+    } catch (err) {
+      setError(err.message);
     }
   };
 
@@ -51,6 +73,12 @@ export default function Login() {
           <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
             Ingresa a tu panel de administración
           </p>
+
+          {error && (
+            <div style={{ backgroundColor: 'rgba(255, 95, 86, 0.1)', color: '#ff5f56', padding: '1rem', borderRadius: '8px', marginBottom: '1.5rem', border: '1px solid rgba(255, 95, 86, 0.2)' }}>
+              {error}
+            </div>
+          )}
 
           <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div>

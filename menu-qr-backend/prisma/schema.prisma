@@ -6,9 +6,19 @@ datasource db {
   provider = "postgresql"
 }
 
+model User {
+  id          String       @id @default(uuid())
+  email       String       @unique
+  password    String
+  name        String
+  createdAt   DateTime     @default(now())
+  restaurants Restaurant[]
+}
+
 model Restaurant {
   id          String     @id @default(uuid())
-  userId      String     // Simulated user ID for MVP
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   name        String
   slug        String     @unique
   logoUrl     String?
