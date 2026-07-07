@@ -26,7 +26,7 @@ function Landing() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
         >
-          <Link to="/admin/dashboard" className="btn btn-outline">Acceso Restaurantes</Link>
+          <Link to="/login" className="btn btn-outline">Acceso Restaurantes</Link>
         </motion.div>
       </nav>
 
