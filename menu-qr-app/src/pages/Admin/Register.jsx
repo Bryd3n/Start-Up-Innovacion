@@ -1,46 +1,51 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { QrCode, Mail, Lock } from 'lucide-react';
+import { QrCode, Mail, Lock, User } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
 import '../../index.css';
 
-export default function Login() {
+export default function Register() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
     
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ name, email, password })
       });
       
       const data = await response.json();
       
       if (!response.ok) {
-        throw new Error(data.error || 'Error al iniciar sesión');
+        throw new Error(data.error || 'Error al registrar usuario');
       }
       
-      // Guardar el token en localStorage para mantener la sesión
+      // Guardar sesión e ir directo al dashboard
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
       
-      toast.success('¡Bienvenido!');
+      toast.success('¡Cuenta creada exitosamente!');
       
-      // Redirigir al dashboard
       setTimeout(() => {
         navigate('/admin/dashboard');
       }, 1000);
+
     } catch (err) {
       toast.error(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,9 +64,9 @@ export default function Login() {
         textAlign: 'center'
       }}>
         <QrCode size={80} style={{ marginBottom: '2rem' }} />
-        <h1 style={{ fontSize: '3rem', margin: '0 0 1rem 0' }}>Menu QR Express</h1>
+        <h1 style={{ fontSize: '3rem', margin: '0 0 1rem 0' }}>Unete a Nosotros</h1>
         <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '400px' }}>
-          La plataforma definitiva para digitalizar el menú de tu restaurante en minutos.
+          Crea tu cuenta en menos de un minuto y empieza a transformar la experiencia de tu restaurante.
         </p>
       </div>
 
@@ -75,12 +80,27 @@ export default function Login() {
       }}>
         <div style={{ width: '100%', maxWidth: '400px', padding: '2rem' }}>
           <Toaster position="top-right" />
-          <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Bienvenido de nuevo</h2>
+          <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Crear Cuenta</h2>
           <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
-            Ingresa a tu panel de administración
+            Ingresa tus datos para comenzar
           </p>
 
-          <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <form onSubmit={handleRegister} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div>
+              <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-muted)' }}>Nombre Completo</label>
+              <div style={{ display: 'flex', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '8px', padding: '0.75rem 1rem', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <User size={18} style={{ color: 'var(--text-muted)', marginRight: '1rem' }} />
+                <input 
+                  type="text" 
+                  placeholder="Ej: Juan Pérez" 
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  style={{ background: 'transparent', border: 'none', color: 'white', width: '100%', outline: 'none' }} 
+                />
+              </div>
+            </div>
+
             <div>
               <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-muted)' }}>Correo Electrónico</label>
               <div style={{ display: 'flex', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: '8px', padding: '0.75rem 1rem', border: '1px solid rgba(255,255,255,0.1)' }}>
@@ -111,13 +131,13 @@ export default function Login() {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '1rem' }}>
-              Iniciar Sesión
+            <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', justifyContent: 'center', marginTop: '1rem', opacity: loading ? 0.7 : 1 }}>
+              {loading ? 'Registrando...' : 'Registrarse Gratis'}
             </button>
           </form>
 
           <p style={{ textAlign: 'center', marginTop: '2rem', color: 'var(--text-muted)' }}>
-            ¿No tienes cuenta? <Link to="/register" style={{ color: 'var(--primary)', textDecoration: 'none' }}>Regístrate gratis</Link>
+            ¿Ya tienes una cuenta? <Link to="/login" style={{ color: 'var(--primary)', textDecoration: 'none' }}>Inicia sesión aquí</Link>
           </p>
 
           <p style={{ textAlign: 'center', marginTop: '1rem' }}>

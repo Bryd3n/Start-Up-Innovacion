@@ -61,8 +61,8 @@ function Landing() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="hero-buttons"
           >
-            <button className="btn btn-primary">Crear mi Menú <ChevronRight size={18} /></button>
-            <button className="btn btn-secondary">Ver Demo</button>
+            <Link to="/register" className="btn btn-primary">Crear mi Menú <ChevronRight size={18} /></Link>
+            <Link to="/menu/demo" className="btn btn-secondary">Ver Demo</Link>
           </motion.div>
         </div>
 
@@ -84,7 +84,7 @@ function Landing() {
               <p className="rating"><Utensils size={14} color="#fdba74" /> La Parrilla del Chef</p>
               <div className="skeleton-line"></div>
               <div className="skeleton-line short"></div>
-              <button className="btn btn-sm btn-action">Ver Carta Digital</button>
+              <Link to="/menu/demo" className="btn btn-sm btn-action" style={{ display: 'inline-block', textAlign: 'center', textDecoration: 'none' }}>Ver Carta Digital</Link>
             </div>
           </div>
         </motion.div>
@@ -138,7 +138,7 @@ function Landing() {
             <li><CheckCircle2 size={18} color="#f97316"/> Panel de administración intuitivo</li>
             <li><CheckCircle2 size={18} color="#f97316"/> Soporte prioritario 24/7</li>
           </ul>
-          <button className="btn btn-primary full-width">Comenzar Prueba Gratis</button>
+          <Link to="/register" className="btn btn-primary full-width" style={{ textAlign: 'center' }}>Comenzar Prueba Gratis</Link>
         </motion.div>
       </section>
 
