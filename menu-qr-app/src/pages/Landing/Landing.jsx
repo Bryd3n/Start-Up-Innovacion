@@ -11,8 +11,10 @@ function Landing() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="logo"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
         >
-          MenuQR<span>Express</span>
+          <img src="/logo.jpg" alt="MenuQR Express" style={{ width: '40px', height: '40px', borderRadius: '8px' }} />
+          <span>MenuQR<span style={{ color: 'var(--primary)' }}>Express</span></span>
         </motion.div>
         <motion.div 
           initial={{ opacity: 0, y: -10 }}

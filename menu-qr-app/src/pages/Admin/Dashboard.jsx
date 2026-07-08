@@ -277,7 +277,8 @@ export default function Dashboard() {
       
       {/* Sidebar */}
       <aside className="no-print" style={{ width: '250px', backgroundColor: 'var(--secondary)', borderRight: '1px solid rgba(255,255,255,0.05)', padding: '2rem 1rem', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ marginBottom: '3rem', paddingLeft: '1rem' }}>
+        <div style={{ marginBottom: '3rem', paddingLeft: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <img src="/logo.jpg" alt="Logo" style={{ width: '36px', height: '36px', borderRadius: '8px' }} />
           <h2 style={{ fontSize: '1.2rem', textAlign: 'left', margin: 0 }}>MenuQR<span style={{ color: 'var(--primary)' }}>Express</span></h2>
         </div>
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>

@@ -54,17 +54,17 @@ export default function Register() {
       {/* Columna Izquierda - Branding */}
       <div style={{ 
         flex: 1, 
-        backgroundColor: 'var(--primary)', 
+        backgroundColor: 'var(--secondary)', 
         display: 'flex', 
-        flexDirection: 'column',
+        flexDirection: 'column', 
         justifyContent: 'center', 
-        alignItems: 'center',
-        padding: '3rem',
-        color: 'white',
-        textAlign: 'center'
+        padding: '4rem',
+        borderRight: '1px solid rgba(255,255,255,0.05)'
       }}>
-        <QrCode size={80} style={{ marginBottom: '2rem' }} />
-        <h1 style={{ fontSize: '3rem', margin: '0 0 1rem 0' }}>Unete a Nosotros</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+          <img src="/logo.jpg" alt="MenuQR Express Logo" style={{ width: '60px', height: '60px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(249,115,22,0.3)' }} />
+          <h1 style={{ fontSize: '3rem', margin: 0 }}>MenuQR<span style={{ color: 'var(--primary)' }}>Express</span></h1>
+        </div>
         <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '400px' }}>
           Crea tu cuenta en menos de un minuto y empieza a transformar la experiencia de tu restaurante.
         </p>
