@@ -215,7 +215,7 @@ export default function Dashboard() {
   };
 
   const handleDeleteCategory = async (id) => {
-    if (!window.confirm('¿Eliminar categoría? Se eliminarán todos sus platillos.')) return;
+    if (!window.confirm('¿Eliminar categoría? Sus platillos se moverán a "Sin categoría".')) return;
     const token = localStorage.getItem('token');
     const toastId = toast.loading('Eliminando...');
     try {

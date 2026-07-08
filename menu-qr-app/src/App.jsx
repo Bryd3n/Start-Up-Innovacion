@@ -4,6 +4,8 @@ import Dashboard from './pages/Admin/Dashboard';
 import Login from './pages/Admin/Login';
 import Register from './pages/Admin/Register';
 import MenuClient from './pages/Client/MenuClient';
+import Terms from './pages/Client/Terms';
+import Privacy from './pages/Client/Privacy';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/menu/:slug" element={<MenuClient />} />
+        <Route path="/terminos" element={<Terms />} />
+        <Route path="/privacidad" element={<Privacy />} />
       </Routes>
     </Router>
   );

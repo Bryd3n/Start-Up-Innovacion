@@ -144,8 +144,12 @@ function Landing() {
         </motion.div>
       </section>
 
-      <footer>
-        <p>&copy; 2026 MenuQR Express. Todos los derechos reservados.</p>
+      <footer style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', padding: '2rem 0' }}>
+        <p>&copy; {new Date().getFullYear()} MenuQR Express. Todos los derechos reservados.</p>
+        <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.9rem' }}>
+          <Link to="/terminos" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Términos de Servicio</Link>
+          <Link to="/privacidad" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Políticas de Privacidad</Link>
+        </div>
       </footer>
     </div>
   );

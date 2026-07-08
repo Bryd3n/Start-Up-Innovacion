@@ -29,7 +29,7 @@ router.post('/register', async (req, res) => {
       data: {
         userId: newUser.id,
         name: `Restaurante de ${name}`,
-        slug: name.toLowerCase().replace(/\s+/g, '-'),
+        slug: `${name.toLowerCase().replace(/\s+/g, '-')}-${Math.floor(Math.random() * 10000)}`,
         categories: {
           create: [
             {
