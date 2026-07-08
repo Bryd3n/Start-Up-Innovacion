@@ -13,7 +13,7 @@ function Landing() {
           className="logo"
           style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
         >
-          <img src="/logo.jpg" alt="MenuQR Express" style={{ width: '40px', height: '40px', borderRadius: '8px' }} />
+          <img src="/logo.jpg" alt="MenuQR Express" style={{ width: '40px', height: '40px', borderRadius: '8px', mixBlendMode: 'screen' }} />
           <span>MenuQR<span style={{ color: 'var(--primary)' }}>Express</span></span>
         </motion.div>
         <motion.div 

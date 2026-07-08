@@ -62,7 +62,7 @@ export default function Register() {
         borderRight: '1px solid rgba(255,255,255,0.05)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-          <img src="/logo.jpg" alt="MenuQR Express Logo" style={{ width: '60px', height: '60px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(249,115,22,0.3)' }} />
+          <img src="/logo.jpg" alt="MenuQR Express Logo" style={{ width: '60px', height: '60px', borderRadius: '12px', mixBlendMode: 'screen' }} />
           <h1 style={{ fontSize: '3rem', margin: 0 }}>MenuQR<span style={{ color: 'var(--primary)' }}>Express</span></h1>
         </div>
         <p style={{ fontSize: '1.2rem', opacity: 0.9, maxWidth: '400px' }}>
