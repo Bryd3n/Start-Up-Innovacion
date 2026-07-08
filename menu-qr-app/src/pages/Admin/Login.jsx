@@ -56,7 +56,7 @@ export default function Login() {
         padding: '4rem',
         borderRight: '1px solid rgba(255,255,255,0.05)'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', userSelect: 'none', pointerEvents: 'none' }}>
           <img src="/logo.jpg" alt="MenuQR Express Logo" style={{ width: '60px', height: '60px', borderRadius: '12px', mixBlendMode: 'screen' }} />
           <h1 style={{ fontSize: '3rem', margin: 0 }}>MenuQR<span style={{ color: 'var(--primary)' }}>Express</span></h1>
         </div>
