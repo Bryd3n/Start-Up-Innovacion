@@ -414,6 +414,20 @@ footer {
     transform: scale(0.95);
 }
 
+
+.notes-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+    scrollbar-width: none;
+    width: 100%;
+}
+.notes-track::-webkit-scrollbar { 
+    display: none; 
+}
 .notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
 
 /* Premium Search Bar */
@@ -872,4 +886,5 @@ footer {
     50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(var(--creator-theme-rgb, 255, 59, 124), 0); }
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--creator-theme-rgb, 255, 59, 124), 0); }
 }
+
 
