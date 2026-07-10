@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --bg-color: #0f172a;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
@@ -535,16 +535,19 @@ footer {
     height: 150px;
     border-radius: 50%;
     margin: 0 auto 1.5rem;
-    padding: 4px;
-    background: linear-gradient(135deg, var(--creator-theme), var(--color-violet));
+    border: 5px solid var(--creator-theme);
     box-shadow: 0 0 15px rgba(var(--creator-theme-rgb), 0.6);
     transition: all 0.3s ease;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .creator-avatar-large:hover {
     box-shadow: 0 0 35px rgba(var(--creator-theme-rgb), 1), 0 0 15px rgba(255, 255, 255, 0.5);
     transform: scale(1.05);
+    border-color: #ffffff;
 }
 
 .creator-avatar-large img {
@@ -552,7 +555,6 @@ footer {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid var(--bg-color);
 }
 
 .creator-header h1 {
