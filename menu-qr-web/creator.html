@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -29,12 +29,12 @@
         <div style="flex: 1; display: flex; justify-content: center; z-index: 50;">
             <div class="custom-dropdown" id="custom-dropdown">
                 <div class="dropdown-trigger" id="dropdown-trigger">
-                    <span id="dropdown-label">Valentina Gómez (Medicina)</span>
+                    <span id="dropdown-label">Valentina GÃ³mez (Medicina)</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
                 <ul class="dropdown-menu" id="dropdown-menu">
-                    <li data-value="1">Valentina Gómez (Medicina)</li>
-                    <li data-value="2">Mateo Rodríguez (Derecho)</li>
+                    <li data-value="1">Valentina GÃ³mez (Medicina)</li>
+                    <li data-value="2">Mateo RodrÃ­guez (Derecho)</li>
                     <li data-value="3">Camila Torres (Arquitectura)</li>
                 </ul>
             </div>
@@ -50,13 +50,13 @@
         <h1 id="c-name">Nombre</h1>
         <div class="creator-stats-panel">
             <div class="stat-item">
-                <span class="icon">📄</span> <span id="c-notes">0 Notas Subidas</span>
+                <span class="icon">ðŸ“„</span> <span id="c-notes">0 Notas Subidas</span>
             </div>
             <div class="stat-item">
-                <span class="icon">⬇️</span> <span id="c-downloads">0 Descargas</span>
+                <span class="icon">â¬‡ï¸</span> <span id="c-downloads">0 Descargas</span>
             </div>
             <div class="stat-item">
-                <span class="icon" style="color: #ffd700;">★★★★☆</span> <span id="c-rating">(0)</span>
+                <span class="icon" style="color: #ffd700;">â˜…â˜…â˜…â˜…â˜†</span> <span id="c-rating">(0)</span>
             </div>
         </div>
     </header>
@@ -73,11 +73,11 @@
             <div class="subscription-card">
                 <h3 id="c-title">Acceso Total</h3>
                 <ul class="sub-benefits">
-                    <li>✔️ Acceso ilimitado a todas mis notas premium</li>
-                    <li>✔️ Contacto directo para dudas</li>
-                    <li>✔️ Packs de resúmenes exclusivos</li>
+                    <li>âœ”ï¸ Acceso ilimitado a todas mis notas premium</li>
+                    <li>âœ”ï¸ Contacto directo para dudas</li>
+                    <li>âœ”ï¸ Packs de resÃºmenes exclusivos</li>
                 </ul>
-                <button class="btn btn-pulse-dynamic full-width">Suscripción Exclusiva por $5/mes</button>
+                <button class="btn btn-pulse-dynamic full-width">SuscripciÃ³n Exclusiva por $5/mes</button>
                 <small id="c-disclaimer">Parte de los fondos va directo al creador.</small>
             </div>
         </aside>
@@ -99,22 +99,22 @@
     <script>
         // 1. Manejador de Estado (State Management)
         
-        // Leer parámetro de la URL (ej. ?id=2)
+        // Leer parÃ¡metro de la URL (ej. ?id=2)
         const urlParams = new URLSearchParams(window.location.search);
         const urlId = urlParams.get('id');
         
         // Encontrar creador o usar el primero por defecto
         const creadorInicial = creatorsData.find(c => c.id == urlId) || creatorsData[0];
         
-        let creadorActivo = creadorInicial; // Estado inicial dinámico
+        let creadorActivo = creadorInicial; // Estado inicial dinÃ¡mico
 
-        // Función para actualizar el estado y forzar el renderizado
+        // FunciÃ³n para actualizar el estado y forzar el renderizado
         function setCreadorActivo(nuevoCreador) {
             creadorActivo = nuevoCreador;
             renderView();
         }
 
-        // 2. Renderizado Dinámico basado en el estado 'creadorActivo'
+        // 2. Renderizado DinÃ¡mico basado en el estado 'creadorActivo'
         function renderView() {
             const creator = creadorActivo;
 
@@ -130,10 +130,10 @@
             `;
 
             // Actualizar Cabecera
-            document.getElementById('c-name').innerHTML = `${creator.nombre} <span class="verified" style="color: var(--creator-theme);">✔️</span>`;
+            document.getElementById('c-name').innerHTML = `${creator.nombre} <span class="verified" style="color: var(--creator-theme);">âœ”ï¸</span>`;
             document.getElementById('c-avatar').src = creator.fotoPerfil;
             
-            // Actualizar Estadísticas
+            // Actualizar EstadÃ­sticas
             document.getElementById('c-notes').innerText = `${creator.notasSubidas} Notas Subidas`;
             document.getElementById('c-downloads').innerText = `${creator.descargasTotales} Descargas`;
             document.getElementById('c-rating').innerText = `(${creator.calificacion})`;
@@ -144,7 +144,7 @@
             document.getElementById('c-title').innerText = `Acceso Total ${firstName}`;
             document.getElementById('c-disclaimer').innerText = `Parte de los fondos va directo a ${firstName}.`;
             
-            // Actualizar Título del Feed
+            // Actualizar TÃ­tulo del Feed
             document.getElementById('c-feed-title').innerText = `Apuntes de ${firstName}`;
 
             // Actualizar Feed de Notas
@@ -156,14 +156,14 @@
                         <div class="note-thumbnail ${doc.thumb} premium-locked">PDF</div>
                         <div class="note-info">
                             <h3>${doc.titulo}</h3>
-                            <p class="stats">⭐ ${doc.rating} | ⬇️ ${doc.descargas}</p>
+                            <p class="stats">â­ ${doc.rating} | â¬‡ï¸ ${doc.descargas}</p>
                         </div>
                     </div>
                 `;
             });
         }
 
-        // Lógica del Dropdown Personalizado
+        // LÃ³gica del Dropdown Personalizado
         const dropdown = document.getElementById('custom-dropdown');
         const trigger = document.getElementById('dropdown-trigger');
         const options = document.querySelectorAll('.dropdown-menu li');
@@ -192,8 +192,9 @@
             }
         });
 
-        // Inicializar la vista (Primera renderización)
+        // Inicializar la vista (Primera renderizaciÃ³n)
         renderView();
     </script>
 </body>
 </html>
+
