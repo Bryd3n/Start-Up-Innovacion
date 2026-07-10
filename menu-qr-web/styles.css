@@ -41,7 +41,10 @@ h2 {
 .text-gradient {
     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: inline-block;
 }
 
 /* Navbar */
