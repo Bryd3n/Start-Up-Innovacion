@@ -1,199 +1,313 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Creador - <span class="text-gradient">UniNotes</span></title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style id="dynamic-styles">
-        :root {
-            --creator-theme: #00ffff;
-            --creator-theme-rgb: 0, 245, 255;
-        }
-    </style>
-</head>
-<body>
-    <div class="network-bg"></div>
-
-    <!-- Header (Navbar reuse) -->
-    <nav class="navbar">
-        <a href="index.html" class="logo" style="text-decoration:none; display: flex; align-items: center;">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px; margin-right: 8px; color: var(--color-cyan);">
-                <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
-            </svg>
-            <span class="text-gradient">UniNotes</span>
-        </a>
-        <div style="flex: 1; display: flex; justify-content: center; z-index: 50;">
-            <div class="custom-dropdown" id="custom-dropdown">
-                <div class="dropdown-trigger" id="dropdown-trigger">
-                    <span id="dropdown-label">Valentina Gómez (Medicina)</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </div>
-                <ul class="dropdown-menu" id="dropdown-menu">
-                    <li data-value="1">Valentina Gómez (Medicina)</li>
-                    <li data-value="2">Mateo Rodríguez (Derecho)</li>
-                    <li data-value="3">Camila Torres (Arquitectura)</li>
-                </ul>
-            </div>
-        </div>
-        <a href="index.html" class="btn btn-outline" style="padding: 0.5rem 1rem;">&larr; Volver al Inicio</a>
-    </nav>
-
-    <!-- Creator Header -->
-    <header class="creator-header">
-        <div class="creator-avatar-large">
-            <img id="c-avatar" src="" alt="Avatar del Creador">
-        </div>
-        <h1 id="c-name">Nombre</h1>
-        <div class="creator-stats-panel">
-            <div class="stat-item">
-                <span class="icon">📄</span> <span id="c-notes">0 Notas Subidas</span>
-            </div>
-            <div class="stat-item">
-                <span class="icon">⬇️</span> <span id="c-downloads">0 Descargas</span>
-            </div>
-            <div class="stat-item">
-                <span class="icon" style="color: #ffd700;">★★★★☆</span> <span id="c-rating">(0)</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Two-Panel Layout -->
-    <main class="creator-layout">
-        <!-- Left Panel: Info & Monetization -->
-        <aside class="creator-left-panel">
-            <div class="creator-about glass-card dynamic-border">
-                <h3 style="color: var(--creator-theme);">Acerca del Creador</h3>
-                <p id="c-bio">Cargando...</p>
-            </div>
-
-            <div class="subscription-card">
-                <h3 id="c-title">Acceso Total</h3>
-                <ul class="sub-benefits">
-                    <li>✔️ Acceso ilimitado a todas mis notas premium</li>
-                    <li>✔️ Contacto directo para dudas</li>
-                    <li>✔️ Packs de resúmenes exclusivos</li>
-                </ul>
-                <button class="btn btn-pulse-dynamic full-width">Suscripción Exclusiva por $5/mes</button>
-                <small id="c-disclaimer">Parte de los fondos va directo al creador.</small>
-            </div>
-        </aside>
-
-        <!-- Right Panel: Notes Feed -->
-        <section class="creator-right-panel">
-            <h3 id="c-feed-title">Apuntes</h3>
-            <div id="c-grid" class="creator-notes-grid">
-                <!-- Dynamically injected notes go here -->
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Menu QR Express. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="data.js"></script>
-    <script>
-        // 1. Manejador de Estado (State Management)
-        
-        // Leer parámetro de la URL (ej. ?id=2)
-        const urlParams = new URLSearchParams(window.location.search);
-        const urlId = urlParams.get('id');
-        
-        // Encontrar creador o usar el primero por defecto
-        const creadorInicial = creatorsData.find(c => c.id == urlId) || creatorsData[0];
-        
-        let creadorActivo = creadorInicial; // Estado inicial dinámico
-
-        // Función para actualizar el estado y forzar el renderizado
-        function setCreadorActivo(nuevoCreador) {
-            creadorActivo = nuevoCreador;
-            renderView();
-        }
-
-        // 2. Renderizado Dinámico basado en el estado 'creadorActivo'
-        function renderView() {
-            const creator = creadorActivo;
-
-            // Actualizar Label del Dropdown
-            document.getElementById('dropdown-label').innerText = `${creator.nombre} (${creator.carrera})`;
-
-            // Actualizar Tema (Variables CSS)
-            document.getElementById('dynamic-styles').innerHTML = `
-                :root {
-                    --creator-theme: ${creator.colorTema};
-                    --creator-theme-rgb: ${creator.colorTemaRgb};
-                }
-            `;
-
-            // Actualizar Cabecera
-            document.getElementById('c-name').innerHTML = `${creator.nombre} <span class="verified" style="color: var(--creator-theme);">✔️</span>`;
-            document.getElementById('c-avatar').src = creator.fotoPerfil;
-            
-            // Actualizar Estadísticas
-            document.getElementById('c-notes').innerText = `${creator.notasSubidas} Notas Subidas`;
-            document.getElementById('c-downloads').innerText = `${creator.descargasTotales} Descargas`;
-            document.getElementById('c-rating').innerText = `(${creator.calificacion})`;
-            
-            // Actualizar Panel Izquierdo
-            document.getElementById('c-bio').innerText = creator.bio;
-            const firstName = creator.nombre.split(' ')[0];
-            document.getElementById('c-title').innerText = `Acceso Total ${firstName}`;
-            document.getElementById('c-disclaimer').innerText = `Parte de los fondos va directo a ${firstName}.`;
-            
-            // Actualizar Título del Feed
-            document.getElementById('c-feed-title').innerText = `Apuntes de ${firstName}`;
-
-            // Actualizar Feed de Notas
-            const grid = document.getElementById('c-grid');
-            grid.innerHTML = '';
-            creator.documentos.forEach(doc => {
-                grid.innerHTML += `
-                    <div class="glass-card note-card-mini dynamic-border">
-                        <div class="note-thumbnail ${doc.thumb} premium-locked">PDF</div>
-                        <div class="note-info">
-                            <h3>${doc.titulo}</h3>
-                            <p class="stats">⭐ ${doc.rating} | ⬇️ ${doc.descargas}</p>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        // Lógica del Dropdown Personalizado
-        const dropdown = document.getElementById('custom-dropdown');
-        const trigger = document.getElementById('dropdown-trigger');
-        const options = document.querySelectorAll('.dropdown-menu li');
-
-        trigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            dropdown.classList.toggle('active');
-        });
-
-        // 3 y 4. Eventos onClick en cada elemento de la lista
-        options.forEach(option => {
-            option.addEventListener('click', () => {
-                const value = option.getAttribute('data-value');
-                dropdown.classList.remove('active');
-                
-                // Encontrar el objeto completo del creador y actualizar el estado
-                const creadorSeleccionado = creatorsData.find(c => c.id == value);
-                setCreadorActivo(creadorSeleccionado);
-            });
-        });
-
-        // Cerrar dropdown al hacer clic afuera
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });
-
-        // Inicializar la vista (Primera renderización)
-        renderView();
-    </script>
-</body>
-</html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Creador - <span class="text-gradient">UniNotes</span></title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style id="dynamic-styles">
+        :root {
+            --creator-theme: #00ffff;
+            --creator-theme-rgb: 0, 245, 255;
+        }
+    </style>
+</head>
+<body>
+    <div class="network-bg"></div>
+
+    <!-- Header (Navbar reuse) -->
+    <nav class="navbar">
+        <a href="index.html" class="logo" style="text-decoration:none; display: flex; align-items: center;">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px; margin-right: 8px; color: var(--color-cyan);">
+                <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
+            </svg>
+            <span class="text-gradient">UniNotes</span>
+        </a>
+        <div style="flex: 1; display: flex; justify-content: center; z-index: 50;">
+            <div class="custom-dropdown" id="custom-dropdown">
+                <div class="dropdown-trigger" id="dropdown-trigger">
+                    <span id="dropdown-label">Valentina Gómez (Medicina)</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <ul class="dropdown-menu" id="dropdown-menu">
+                    <li data-value="1">Valentina Gómez (Medicina)</li>
+                    <li data-value="2">Mateo Rodríguez (Derecho)</li>
+                    <li data-value="3">Camila Torres (Arquitectura)</li>
+                </ul>
+            </div>
+        </div>
+        <a href="index.html" class="btn btn-outline" style="padding: 0.5rem 1rem;">&larr; Volver al Inicio</a>
+    </nav>
+
+    <!-- Creator Header -->
+    <header class="creator-header">
+        <div class="creator-avatar-large">
+            <img id="c-avatar" src="" alt="Avatar del Creador">
+        </div>
+        <h1 id="c-name">Nombre</h1>
+        <div class="creator-stats-panel">
+            <div class="stat-item">
+                <span class="icon">📄</span> <span id="c-notes">0 Notas Subidas</span>
+            </div>
+            <div class="stat-item">
+                <span class="icon">⬇️</span> <span id="c-downloads">0 Descargas</span>
+            </div>
+            <div class="stat-item">
+                <span class="icon" style="color: #ffd700;">★★★★☆</span> <span id="c-rating">(0)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Two-Panel Layout -->
+    <main class="creator-layout">
+        <!-- Left Panel: Info & Monetization -->
+        <aside class="creator-left-panel">
+            <div class="creator-about glass-card dynamic-border">
+                <h3 style="color: var(--creator-theme);">Acerca del Creador</h3>
+                <p id="c-bio">Cargando...</p>
+            </div>
+
+            <div class="subscription-card">
+                <h3 id="c-title">Acceso Total</h3>
+                <ul class="sub-benefits">
+                    <li>✔️ Acceso ilimitado a todas mis notas premium</li>
+                    <li>✔️ Contacto directo para dudas</li>
+                    <li>✔️ Packs de resúmenes exclusivos</li>
+                </ul>
+                <button class="btn btn-pulse-dynamic full-width">Suscripción Exclusiva por $5/mes</button>
+                <small id="c-disclaimer">Parte de los fondos va directo al creador.</small>
+            </div>
+        </aside>
+
+        <!-- Right Panel: Notes Feed -->
+        <section class="creator-right-panel">
+            <h3 id="c-feed-title">Apuntes</h3>
+            <div id="c-grid" class="creator-notes-grid">
+                <!-- Dynamically injected notes go here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <span class="text-gradient">UniNotes</span>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal-backdrop" style="display: none;">
+        <div class="preview-card glass-card">
+            <button class="close-btn" id="close-preview">&times;</button>
+            <div class="preview-header">
+                <div>
+                    <span class="tag" id="preview-tag" style="display:none;"></span>
+                    <h3 id="preview-title" style="margin-top: 0.5rem; color: white;">Apunte</h3>
+                </div>
+                <div id="preview-stats" class="stats" style="margin-top: 0;">15 páginas • 2.4 MB</div>
+            </div>
+            
+            <div class="preview-body">
+                <div class="pdf-viewer">
+                    <div class="pdf-page">
+                        <div class="watermark">UNINOTES</div>
+                        <div class="mock-text title"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line short"></div>
+                        <div class="mock-text image"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line short"></div>
+                    </div>
+                    
+                    <div class="pdf-page blurred-page">
+                        <div class="watermark">UNINOTES</div>
+                        <div class="mock-text title" style="width: 40%"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line short"></div>
+                    </div>
+                </div>
+                
+                <div class="preview-paywall-overlay">
+                    <svg class="modal-icon" style="width: 40px; margin-bottom: 1rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <h3 style="color: white; margin-bottom: 0.5rem; font-size: 1.5rem;">Sigue leyendo con Premium</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1.5rem; max-width: 400px; text-align: center;">Suscríbete al acceso total del creador para leer y descargar sin límites.</p>
+                    <button class="btn btn-pulse-dynamic" id="btn-upgrade-preview" style="padding: 1rem 2rem; border-radius: 50px;">Desbloquear por $5/mes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paywall Modal -->
+    <div id="paywall-modal" class="modal-backdrop" style="display: none;">
+        <div class="modal-card">
+            <svg class="modal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <h2>Desbloquea el Acceso Total</h2>
+            <p>Únete a <span class="text-gradient">UniNotes</span> y accede de forma ilimitada a los apuntes de este creador.</p>
+            <button class="btn btn-modal glow-top">Suscribirse por $5/mes</button>
+            <small>Cancela cuando quieras</small>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        // 1. Manejador de Estado (State Management)
+        
+        // Leer parámetro de la URL (ej. ?id=2)
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlId = urlParams.get('id');
+        
+        // Encontrar creador o usar el primero por defecto
+        const creadorInicial = creatorsData.find(c => c.id == urlId) || creatorsData[0];
+        
+        let creadorActivo = creadorInicial; // Estado inicial dinámico
+
+        // Función para actualizar el estado y forzar el renderizado
+        function setCreadorActivo(nuevoCreador) {
+            creadorActivo = nuevoCreador;
+            renderView();
+        }
+
+        // 2. Renderizado Dinámico basado en el estado 'creadorActivo'
+        function renderView() {
+            const creator = creadorActivo;
+
+            // Actualizar Label del Dropdown
+            document.getElementById('dropdown-label').innerText = `${creator.nombre} (${creator.carrera})`;
+
+            // Actualizar Tema (Variables CSS)
+            document.getElementById('dynamic-styles').innerHTML = `
+                :root {
+                    --creator-theme: ${creator.colorTema};
+                    --creator-theme-rgb: ${creator.colorTemaRgb};
+                }
+            `;
+
+            // Actualizar Cabecera
+            document.getElementById('c-name').innerHTML = `${creator.nombre} <span class="verified" style="color: var(--creator-theme);">✔️</span>`;
+            document.getElementById('c-avatar').src = creator.fotoPerfil;
+            
+            // Actualizar Estadísticas
+            document.getElementById('c-notes').innerText = `${creator.notasSubidas} Notas Subidas`;
+            document.getElementById('c-downloads').innerText = `${creator.descargasTotales} Descargas`;
+            document.getElementById('c-rating').innerText = `(${creator.calificacion})`;
+            
+            // Actualizar Panel Izquierdo
+            document.getElementById('c-bio').innerText = creator.bio;
+            const firstName = creator.nombre.split(' ')[0];
+            document.getElementById('c-title').innerText = `Acceso Total ${firstName}`;
+            document.getElementById('c-disclaimer').innerText = `Parte de los fondos va directo a ${firstName}.`;
+            
+            // Actualizar Título del Feed
+            document.getElementById('c-feed-title').innerText = `Apuntes de ${firstName}`;
+
+            // Actualizar Feed de Notas
+            const grid = document.getElementById('c-grid');
+            grid.innerHTML = '';
+            creator.documentos.forEach(doc => {
+                grid.innerHTML += `
+                    <div class="glass-card note-card-mini dynamic-border">
+                        <div class="note-thumbnail ${doc.thumb} premium-locked">PDF</div>
+                        <div class="note-info">
+                            <h3>${doc.titulo}</h3>
+                            <p class="stats">⭐ ${doc.rating} | ⬇️ ${doc.descargas}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Lógica del Dropdown Personalizado
+        const dropdown = document.getElementById('custom-dropdown');
+        const trigger = document.getElementById('dropdown-trigger');
+        const options = document.querySelectorAll('.dropdown-menu li');
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+
+        // 3 y 4. Eventos onClick en cada elemento de la lista
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                const value = option.getAttribute('data-value');
+                dropdown.classList.remove('active');
+                
+                // Encontrar el objeto completo del creador y actualizar el estado
+                const creadorSeleccionado = creatorsData.find(c => c.id == value);
+                setCreadorActivo(creadorSeleccionado);
+            });
+        });
+
+        // Cerrar dropdown al hacer clic afuera
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Inicializar la vista (Primera renderización)
+        renderView();
+
+        // 5. Lógica del Preview y Paywall Modal
+        const previewModal = document.getElementById('preview-modal');
+        const closePreviewBtn = document.getElementById('close-preview');
+        const btnUpgradePreview = document.getElementById('btn-upgrade-preview');
+        const paywallModal = document.getElementById('paywall-modal');
+        const pTitle = document.getElementById('preview-title');
+        const pStats = document.getElementById('preview-stats');
+
+        // Delegación de eventos para las tarjetas generadas dinámicamente
+        document.getElementById('c-grid').addEventListener('click', (e) => {
+            const card = e.target.closest('.note-card-mini');
+            if (card) {
+                const titleEl = card.querySelector('h3');
+                if(titleEl && pTitle) pTitle.innerHTML = titleEl.innerHTML;
+                
+                if(pStats) {
+                    const pages = Math.floor(Math.random() * 25) + 5;
+                    const size = (Math.random() * 4 + 0.5).toFixed(1);
+                    pStats.innerText = `${pages} páginas • ${size} MB`;
+                }
+                
+                if (previewModal) previewModal.style.display = 'flex';
+            }
+        });
+
+        if (previewModal) {
+            closePreviewBtn.addEventListener('click', () => {
+                previewModal.style.display = 'none';
+            });
+
+            previewModal.addEventListener('click', (e) => {
+                if (e.target === previewModal) {
+                    previewModal.style.display = 'none';
+                }
+            });
+
+            if (btnUpgradePreview && paywallModal) {
+                btnUpgradePreview.addEventListener('click', () => {
+                    previewModal.style.display = 'none';
+                    paywallModal.style.display = 'flex';
+                });
+            }
+        }
+
+        if (paywallModal) {
+            paywallModal.addEventListener('click', (e) => {
+                if (e.target === paywallModal) {
+                    paywallModal.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

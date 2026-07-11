@@ -1,249 +1,696 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniNotes - Apuntes Verificados</title>
-    <meta name="description" content="Accede a los mejores resúmenes y apuntes universitarios por solo $3 al mes. Sube tus apuntes y ayuda a otros.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="network-bg"></div>
-    <nav class="navbar">
-        <div class="logo" style="display: flex; align-items: center;">
-            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px; margin-right: 8px; color: var(--color-cyan);">
-                <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
-            </svg>
-            <span class="text-gradient">UniNotes</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#como-funciona">Cómo funciona</a></li>
-            <li><a href="#beneficios">Beneficios</a></li>
-            <li><a href="#precios">Precios</a></li>
-        </ul>
-        <div class="header-actions" style="display: flex; gap: 1rem; align-items: center;">
-            <div class="search-container">
-                <div class="search-box">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    <input type="text" class="search-input" placeholder="Buscar Apuntes...">
-                </div>
-            </div>
-            <a href="#unirse" class="btn btn-primary" style="white-space: nowrap; font-size: 14px; padding: 8px 16px; width: auto; height: auto; aspect-ratio: unset;">Iniciar Sesión</a>
-        </div>
-    </nav>
-
-    <header class="hero uni-hero" style="justify-content: center; padding-top: 8rem; min-height: auto;">
-        <div class="hero-content" style="max-width: 900px; text-align: center;">
-            <div class="badge" style="margin: 0 auto 1.5rem auto; display: inline-block;">🚀 La plataforma #1 de estudiantes</div>
-            <h1>Apuntes Verificados de Excelencia <br>para tu Universidad, <span class="text-gradient">al Instante.</span></h1>
-            <p style="margin: 0 auto 2.5rem auto; max-width: 700px;">Accede a miles de recursos de estudio validados por los mejores alumnos. Sube tus apuntes, ayuda a tu comunidad y gana recompensas por tu conocimiento.</p>
-            <div class="hero-buttons" style="justify-content: center;">
-                <a href="#precios" class="btn btn-primary">Obtener Acceso Total</a>
-                <a href="#subir" class="btn btn-secondary">Quiero subir mis apuntes</a>
-            </div>
-        </div>
-    </header>
-
-    <section id="beneficios" class="featured-notes">
-        <h2>Apuntes Destacados</h2>
-        <div class="carousel-container" style="display: flex; align-items: center; gap: 1rem; width: 100%;">
-            <button class="carousel-btn prev">&lt;</button>
-            <div class="notes-track">
-                <div class="glass-card note-card">
-                    <div class="note-thumbnail thumb-cyan">PDF</div>
-                    <div class="note-info">
-                        <span class="tag tag-blue">Matemáticas</span>
-                        <h3><b>Resumen_Calculo_II.pdf</b></h3>
-                        <p class="stats">⭐ 4.9 (124) | ⬇️ 1,500 Descargas</p>
-                    </div>
-                </div>
-                <div class="glass-card note-card">
-                    <div class="note-thumbnail thumb-violet">PDF</div>
-                    <div class="note-info">
-                        <span class="tag tag-green">Salud</span>
-                        <h3><b>Anatomia_Basica.pdf</b></h3>
-                        <p class="stats">⭐ 4.8 (98) | ⬇️ 1,200 Descargas</p>
-                    </div>
-                </div>
-                <div class="glass-card note-card">
-                    <div class="note-thumbnail thumb-yellow">PDF</div>
-                    <div class="note-info">
-                        <span class="tag tag-yellow">Economía</span>
-                        <h3><b>Economia_Macro.pdf</b></h3>
-                        <p class="stats">⭐ 5.0 (305) | ⬇️ 3,400 Descargas</p>
-                    </div>
-                </div>
-                <div class="glass-card note-card">
-                    <div class="note-thumbnail thumb-green">PDF</div>
-                    <div class="note-info">
-                        <span class="tag tag-purple">Derecho</span>
-                        <h3><b>Leyes_Civiles_1.pdf</b></h3>
-                        <p class="stats">⭐ 4.7 (85) | ⬇️ 850 Descargas</p>
-                    </div>
-                </div>
-                <div class="glass-card note-card">
-                    <div class="note-thumbnail thumb-cyan">PDF</div>
-                    <div class="note-info">
-                        <span class="tag tag-blue">Física</span>
-                        <h3><b>Mecanica_Cuantica.pdf</b></h3>
-                        <p class="stats">⭐ 4.9 (210) | ⬇️ 2,100 Descargas</p>
-                    </div>
-                </div>
-                <div class="glass-card note-card">
-                    <div class="note-thumbnail thumb-violet">PDF</div>
-                    <div class="note-info">
-                        <span class="tag tag-green">Biología</span>
-                        <h3><b>Genetica_Avanzada.pdf</b></h3>
-                        <p class="stats">⭐ 4.8 (145) | ⬇️ 1,800 Descargas</p>
-                    </div>
-                </div>
-                <div class="glass-card note-card">
-                    <div class="note-thumbnail thumb-yellow">PDF</div>
-                    <div class="note-info">
-                        <span class="tag tag-yellow">Historia</span>
-                        <h3><b>Historia_Moderna.pdf</b></h3>
-                        <p class="stats">⭐ 5.0 (420) | ⬇️ 4,500 Descargas</p>
-                    </div>
-                </div>
-                <div class="glass-card note-card">
-                    <div class="note-thumbnail thumb-green">PDF</div>
-                    <div class="note-info">
-                        <span class="tag tag-purple">Filosofía</span>
-                        <h3><b>Etica_y_Moral.pdf</b></h3>
-                        <p class="stats">⭐ 4.7 (95) | ⬇️ 900 Descargas</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-btn next">&gt;</button>
-        </div>
-        <button id="btn-test-download" class="btn btn-primary" style="margin: 2rem auto 0; display: block;">Intentar Descargar</button>
-    </section>
-
-    <section class="top-creators">
-        <h2>Nuestros Top Creadores</h2>
-        <div class="creators-track" id="creators-track">
-            <!-- Renderizado Dinámico vía JavaScript -->
-        </div>
-    </section>
-
-    <section id="como-funciona" class="features">
-        <h2>¿Por qué elegir <span class="text-gradient">UniNotes?</span></h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="icon">📚</div>
-                <h3>Contenido Filtrado</h3>
-                <p>Solo aceptamos apuntes de alta calidad. Olvídate de fotos borrosas de cuadernos ilegibles.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">⚡</div>
-                <h3>Acceso Inmediato</h3>
-                <p>Descarga tus PDFs en un segundo. Estudia desde tu celular, tablet o laptop sin límites.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">💰</div>
-                <h3>Precio Justo</h3>
-                <p>Por menos de lo que cuesta un café, tienes acceso a todo el catálogo universitario del mes.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="precios" class="pricing">
-        <div class="pricing-card premium">
-            <h2>Plan Premium</h2>
-            <div class="price">$3 <span>/ mes</span></div>
-            <p>Todo lo que necesitas para salvar tu semestre.</p>
-            <ul class="pricing-features">
-                <li>✔️ Acceso ilimitado a todos los PDFs</li>
-                <li>✔️ Descargas offline habilitadas</li>
-                <li>✔️ Sin publicidad molesta</li>
-                <li>✔️ Apoyo directo a creadores</li>
-            </ul>
-            <a href="#" class="btn btn-primary full-width">Suscribirse Ahora</a>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 <span class="text-gradient">UniNotes</span>. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Paywall Modal -->
-    <div id="paywall-modal" class="modal-backdrop" style="display: none;">
-        <div class="modal-card">
-            <svg class="modal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-            </svg>
-            <h2>Desbloquea el Acceso Total</h2>
-            <p>Únete a <span class="text-gradient">UniNotes</span> y accede de forma ilimitada a este y miles de apuntes verificados por los mejores estudiantes.</p>
-            <button class="btn btn-modal glow-top">Suscribirse por $3/mes</button>
-            <small>Cancela cuando quieras</small>
-        </div>
-    </div>
-
-    <script src="data.js"></script>
-    <script>
-        // Make arrows functional
-        const track = document.querySelector('.notes-track');
-        const prevBtn = document.querySelector('.carousel-btn.prev');
-        const nextBtn = document.querySelector('.carousel-btn.next');
-
-        if(prevBtn && nextBtn && track) {
-            prevBtn.addEventListener('click', () => {
-                track.scrollBy({ left: -320, behavior: 'smooth' });
-            });
-            nextBtn.addEventListener('click', () => {
-                track.scrollBy({ left: 320, behavior: 'smooth' });
-            });
-        }
-        
-        // Renderizar Creadores en Index
-        const creatorsTrack = document.getElementById('creators-track');
-        if (creatorsTrack && typeof creatorsData !== 'undefined') {
-            creatorsData.forEach(creator => {
-                const card = document.createElement('div');
-                card.className = 'glass-card creator-card dynamic-creator-card glow-top';
-                card.style.setProperty('--creator-theme', creator.colorTema);
-                card.style.setProperty('--creator-theme-rgb', creator.colorTemaRgb);
-                
-                card.innerHTML = `
-                    <img src="${creator.fotoPerfil}" alt="${creator.nombre}" class="creator-avatar">
-                    <h3 style="margin-bottom: 0.2rem;">${creator.nombre} <span class="verified" style="color: ${creator.colorTema}">✓</span></h3>
-                    <p class="creator-career" style="color: ${creator.colorTema}; font-weight: 600;">${creator.carrera}</p>
-                    <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.5rem; color:var(--text-muted); font-size:0.85rem;">
-                        <span>📄 ${creator.notasSubidas} Notas</span>
-                        <span>⭐ ${creator.calificacion}</span>
-                    </div>
-                `;
-                
-                card.addEventListener('click', () => {
-                    window.location.href = `creator.html?id=${creator.id}`;
-                });
-                
-                creatorsTrack.appendChild(card);
-            });
-        }
-        
-        // Paywall Modal Logic
-        const btnDownload = document.getElementById('btn-test-download');
-        const modal = document.getElementById('paywall-modal');
-        
-        if(btnDownload && modal) {
-            btnDownload.addEventListener('click', () => {
-                modal.style.display = 'flex';
-            });
-            
-            // Cerrar al hacer clic fuera
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniNotes - Apuntes Verificados</title>
+    <meta name="description" content="Accede a los mejores resúmenes y apuntes universitarios por solo $3 al mes. Sube tus apuntes y ayuda a otros.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="network-bg"></div>
+    <nav class="navbar">
+        <div class="logo" style="display: flex; align-items: center;">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px; margin-right: 8px; color: var(--color-cyan);">
+                <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
+            </svg>
+            <span class="text-gradient">UniNotes</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#precios">Precios</a></li>
+        </ul>
+        <div class="header-actions" style="display: flex; gap: 1rem; align-items: center;">
+            <div class="search-container">
+                <div class="search-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" class="search-input" placeholder="Buscar Apuntes...">
+                </div>
+            </div>
+            <a href="#" id="btn-login-nav" class="btn btn-primary" style="white-space: nowrap; font-size: 14px; padding: 8px 16px; width: auto; height: auto; aspect-ratio: unset;">Iniciar Sesión</a>
+        </div>
+    </nav>
+
+    <header class="hero uni-hero" style="justify-content: center; padding-top: 8rem; min-height: auto;">
+        <div class="hero-content" style="max-width: 900px; text-align: center;">
+            <div class="badge" style="margin: 0 auto 1.5rem auto; display: inline-block;">🚀 La plataforma #1 de estudiantes</div>
+            <h1>Apuntes Verificados de Excelencia <br>para tu Universidad, <span class="text-gradient">al Instante.</span></h1>
+            <p style="margin: 0 auto 2.5rem auto; max-width: 700px;">Accede a miles de recursos de estudio validados por los mejores alumnos. Sube tus apuntes, ayuda a tu comunidad y gana recompensas por tu conocimiento.</p>
+            <div class="hero-buttons" style="justify-content: center;">
+                <a href="#precios" class="btn btn-primary">Obtener Acceso Total</a>
+                <a href="#subir" class="btn btn-secondary">Quiero subir mis apuntes</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="beneficios" class="featured-notes">
+        <h2>Apuntes Destacados</h2>
+        <div class="carousel-container" style="display: flex; align-items: center; gap: 1rem; width: 100%;">
+            <button class="carousel-btn prev">&lt;</button>
+            <div class="notes-track">
+                <div class="glass-card note-card">
+                    <div class="note-thumbnail thumb-cyan">PDF</div>
+                    <div class="note-info">
+                        <span class="tag tag-blue">Matemáticas</span>
+                        <h3><b>Resumen_Calculo_II.pdf</b></h3>
+                        <p class="stats">⭐ 4.9 (124) | ⬇️ 1,500 Descargas</p>
+                    </div>
+                </div>
+                <div class="glass-card note-card">
+                    <div class="note-thumbnail thumb-violet">PDF</div>
+                    <div class="note-info">
+                        <span class="tag tag-green">Salud</span>
+                        <h3><b>Anatomia_Basica.pdf</b></h3>
+                        <p class="stats">⭐ 4.8 (98) | ⬇️ 1,200 Descargas</p>
+                    </div>
+                </div>
+                <div class="glass-card note-card">
+                    <div class="note-thumbnail thumb-yellow">PDF</div>
+                    <div class="note-info">
+                        <span class="tag tag-yellow">Economía</span>
+                        <h3><b>Economia_Macro.pdf</b></h3>
+                        <p class="stats">⭐ 5.0 (305) | ⬇️ 3,400 Descargas</p>
+                    </div>
+                </div>
+                <div class="glass-card note-card">
+                    <div class="note-thumbnail thumb-green">PDF</div>
+                    <div class="note-info">
+                        <span class="tag tag-purple">Derecho</span>
+                        <h3><b>Leyes_Civiles_1.pdf</b></h3>
+                        <p class="stats">⭐ 4.7 (85) | ⬇️ 850 Descargas</p>
+                    </div>
+                </div>
+                <div class="glass-card note-card">
+                    <div class="note-thumbnail thumb-cyan">PDF</div>
+                    <div class="note-info">
+                        <span class="tag tag-blue">Física</span>
+                        <h3><b>Mecanica_Cuantica.pdf</b></h3>
+                        <p class="stats">⭐ 4.9 (210) | ⬇️ 2,100 Descargas</p>
+                    </div>
+                </div>
+                <div class="glass-card note-card">
+                    <div class="note-thumbnail thumb-violet">PDF</div>
+                    <div class="note-info">
+                        <span class="tag tag-green">Biología</span>
+                        <h3><b>Genetica_Avanzada.pdf</b></h3>
+                        <p class="stats">⭐ 4.8 (145) | ⬇️ 1,800 Descargas</p>
+                    </div>
+                </div>
+                <div class="glass-card note-card">
+                    <div class="note-thumbnail thumb-yellow">PDF</div>
+                    <div class="note-info">
+                        <span class="tag tag-yellow">Historia</span>
+                        <h3><b>Historia_Moderna.pdf</b></h3>
+                        <p class="stats">⭐ 5.0 (420) | ⬇️ 4,500 Descargas</p>
+                    </div>
+                </div>
+                <div class="glass-card note-card">
+                    <div class="note-thumbnail thumb-green">PDF</div>
+                    <div class="note-info">
+                        <span class="tag tag-purple">Filosofía</span>
+                        <h3><b>Etica_y_Moral.pdf</b></h3>
+                        <p class="stats">⭐ 4.7 (95) | ⬇️ 900 Descargas</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn next">&gt;</button>
+        </div>
+        <button id="btn-test-download" class="btn btn-primary" style="margin: 2rem auto 0; display: block;">Intentar Descargar</button>
+    </section>
+
+    <section class="top-creators">
+        <h2>Nuestros Top Creadores</h2>
+        <div class="creators-track" id="creators-track">
+            <!-- Skeletons temporales -->
+            <div class="glass-card creator-card skeleton-card">
+                <div class="creator-avatar skeleton-avatar"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+                <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.5rem; width:100%;">
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line short"></div>
+                </div>
+            </div>
+            <div class="glass-card creator-card skeleton-card">
+                <div class="creator-avatar skeleton-avatar"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+                <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.5rem; width:100%;">
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line short"></div>
+                </div>
+            </div>
+            <div class="glass-card creator-card skeleton-card">
+                <div class="creator-avatar skeleton-avatar"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line short"></div>
+                <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.5rem; width:100%;">
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line short"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="como-funciona" class="features">
+        <h2>¿Por qué elegir <span class="text-gradient">UniNotes?</span></h2>
+        <div class="feature-grid">
+            <div class="feature-card reveal-card">
+                <div class="icon">📚</div>
+                <h3>Contenido Filtrado</h3>
+                <p>Solo aceptamos apuntes de alta calidad. Olvídate de fotos borrosas de cuadernos ilegibles.</p>
+            </div>
+            <div class="feature-card reveal-card">
+                <div class="icon">⚡</div>
+                <h3>Acceso Inmediato</h3>
+                <p>Descarga tus PDFs en un segundo. Estudia desde tu celular, tablet o laptop sin límites.</p>
+            </div>
+            <div class="feature-card reveal-card">
+                <div class="icon">💰</div>
+                <h3>Precio Justo</h3>
+                <p>Por menos de lo que cuesta un café, tienes acceso a todo el catálogo universitario del mes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="subir" class="upload-section">
+        <h2>Sube tus <span class="text-gradient">Apuntes</span></h2>
+        <div class="upload-container" id="drop-zone">
+            <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <p>Arrastra tus apuntes aquí o haz clic para explorar</p>
+            <input type="file" id="file-input" accept=".pdf" style="display: none;">
+        </div>
+    </section>
+
+    <section id="precios" class="pricing">
+        <div class="pricing-card premium">
+            <h2>Plan Premium</h2>
+            <div class="price">$3 <span>/ mes</span></div>
+            <p>Todo lo que necesitas para salvar tu semestre.</p>
+            <ul class="pricing-features">
+                <li>✔️ Acceso ilimitado a todos los PDFs</li>
+                <li>✔️ Descargas offline habilitadas</li>
+                <li>✔️ Sin publicidad molesta</li>
+                <li>✔️ Apoyo directo a creadores</li>
+            </ul>
+            <a href="#" class="btn btn-primary full-width">Suscribirse Ahora</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <span class="text-gradient">UniNotes</span>. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Upload Modal -->
+    <div id="upload-modal" class="modal-backdrop" style="display: none;">
+        <div class="modal-card" style="max-width: 500px; text-align: center;">
+            <button class="close-btn" id="close-upload">&times;</button>
+            <h2 style="margin-bottom: 1.5rem;">Detalles del Apunte</h2>
+            
+            <div id="upload-form">
+                <div class="input-group" style="margin-bottom: 1.5rem; text-align: left;">
+                    <label style="display:block; margin-bottom: 0.5rem; color: #94a3b8; font-weight: 600;">Título del Archivo</label>
+                    <input type="text" id="upload-title" class="premium-input" placeholder="Ej. Resumen de Anatomía">
+                </div>
+                <div class="input-group" style="margin-bottom: 2rem; text-align: left;">
+                    <label style="display:block; margin-bottom: 0.5rem; color: #94a3b8; font-weight: 600;">Categoría</label>
+                    <div class="custom-dropdown" id="category-dropdown">
+                        <div class="dropdown-selected">Selecciona una categoría...</div>
+                        <ul class="dropdown-list">
+                            <li>Medicina</li>
+                            <li>Ingeniería</li>
+                            <li>Derecho</li>
+                            <li>Economía</li>
+                            <li>Filosofía</li>
+                            <li>Otro</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="btn btn-pulse-dynamic" id="btn-submit-upload" style="width: 100%; border-radius: 12px; font-weight: bold; font-size: 1.1rem; padding: 1rem;">SUBIR APUNTE</button>
+            </div>
+            
+            <div id="upload-progress" style="display: none; padding: 2rem 0;">
+                <div style="width: 50px; height: 50px; border: 4px solid rgba(138,43,226,0.3); border-top-color: #8A2BE2; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1.5rem auto;"></div>
+                <h3 style="color: white; margin-bottom: 0.5rem;">Procesando archivo...</h3>
+                <p style="color: #94a3b8; font-size: 0.9rem;" id="upload-status-text">Analizando calidad del documento</p>
+            </div>
+            
+            <div id="upload-success" style="display: none; padding: 2rem 0;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+                <h3 style="color: white; margin-bottom: 0.5rem;">¡Apunte Publicado!</h3>
+                <p style="color: #94a3b8; font-size: 0.9rem;">Tu apunte ya está disponible en la plataforma. Comenzarás a ganar dinero por cada descarga premium.</p>
+                <button class="btn btn-outline" id="btn-close-success" style="margin-top: 2rem; width: 100%;">Volver al inicio</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal-backdrop" style="display: none;">
+        <div class="preview-card glass-card">
+            <button class="close-btn" id="close-preview">&times;</button>
+            <div class="preview-header">
+                <div>
+                    <span class="tag tag-purple" id="preview-tag">Filosofía</span>
+                    <h3 id="preview-title" style="margin-top: 0.5rem; color: white;">Etica_y_Moral.pdf</h3>
+                </div>
+                <div id="preview-stats" class="stats" style="margin-top: 0;">15 páginas • 2.4 MB</div>
+            </div>
+            
+            <div class="preview-body">
+                <div class="pdf-viewer">
+                    <!-- Page 1 -->
+                    <div class="pdf-page">
+                        <div class="watermark">UNINOTES</div>
+                        <div class="mock-text title"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line short"></div>
+                        <div class="mock-text image"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line short"></div>
+                        <div class="mock-text line"></div>
+                    </div>
+                    
+                    <!-- Page 2 -->
+                    <div class="pdf-page blurred-page">
+                        <div class="watermark">UNINOTES</div>
+                        <div class="mock-text title" style="width: 40%"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line"></div>
+                        <div class="mock-text line short"></div>
+                    </div>
+                </div>
+                
+                <div class="preview-paywall-overlay">
+                    <svg class="modal-icon" style="width: 40px; margin-bottom: 1rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <h3 style="color: white; margin-bottom: 0.5rem; font-size: 1.5rem;">Sigue leyendo con Premium</h3>
+                    <p style="color: #94a3b8; margin-bottom: 1.5rem; max-width: 400px; text-align: center;">Este apunte tiene 13 páginas más llenas de información clave. Suscríbete para leer y descargar sin límites.</p>
+                    <button class="btn btn-pulse-dynamic" id="btn-upgrade-preview" style="padding: 1rem 2rem; border-radius: 50px;">Desbloquear todo por $3/mes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paywall Modal -->
+    <div id="paywall-modal" class="modal-backdrop" style="display: none;">
+        <div class="modal-card">
+            <svg class="modal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <h2>Desbloquea el Acceso Total</h2>
+            <p>Únete a <span class="text-gradient">UniNotes</span> y accede de forma ilimitada a este y miles de apuntes verificados por los mejores estudiantes.</p>
+            <button class="btn btn-modal glow-top">Suscribirse por $3/mes</button>
+            <small>Cancela cuando quieras</small>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+
+    <!-- Auth Modal (Login/Register) -->
+    <div class="modal-backdrop" id="auth-modal" style="display: none;">
+        <div class="modal-card" style="max-width: 400px; padding: 2.5rem;">
+            <button class="close-btn" id="close-auth">&times;</button>
+            <div class="auth-header">
+                <div class="auth-switch">
+                    <button class="auth-switch-btn active" id="btn-tab-login">Entrar</button>
+                    <button class="auth-switch-btn" id="btn-tab-register">Crear Cuenta</button>
+                </div>
+            </div>
+            
+            <form id="auth-form" class="upload-form">
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" class="premium-input" placeholder="estudiante@universidad.edu" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" class="premium-input" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-pulse-dynamic" style="width: 100%; border-radius: 12px; margin-top: 1rem;" id="auth-submit-btn">INICIAR SESIÓN</button>
+                
+                <div class="auth-divider">
+                    <span>o</span>
+                </div>
+                
+                <button type="button" class="btn social-login-btn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    Continuar con Google
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Make arrows functional
+        const track = document.querySelector('.notes-track');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+
+        if(prevBtn && nextBtn && track) {
+            prevBtn.addEventListener('click', () => {
+                track.scrollBy({ left: -320, behavior: 'smooth' });
+            });
+            nextBtn.addEventListener('click', () => {
+                track.scrollBy({ left: 320, behavior: 'smooth' });
+            });
+        }
+        
+        // Renderizar Creadores en Index
+        const creatorsTrack = document.getElementById('creators-track');
+        if (creatorsTrack && typeof creatorsData !== 'undefined') {
+            // Simulamos un retraso de carga (1.5s) para que el Skeleton Loader sea visible
+            setTimeout(() => {
+                // Limpiar los skeletons antes de inyectar
+                creatorsTrack.innerHTML = '';
+                
+                creatorsData.forEach(creator => {
+                    const card = document.createElement('div');
+                    card.className = 'glass-card creator-card dynamic-creator-card glow-top';
+                    card.style.setProperty('--creator-theme', creator.colorTema);
+                    card.style.setProperty('--creator-theme-rgb', creator.colorTemaRgb);
+                    
+                    card.innerHTML = `
+                        <img src="${creator.fotoPerfil}" alt="${creator.nombre}" class="creator-avatar">
+                        <h3 style="margin-bottom: 0.2rem;">${creator.nombre} <span class="verified" style="color: ${creator.colorTema}">✓</span></h3>
+                        <p class="creator-career" style="color: ${creator.colorTema}; font-weight: 600;">${creator.carrera}</p>
+                        <div style="display:flex; justify-content:center; gap:1rem; margin-top:0.5rem; color:var(--text-muted); font-size:0.85rem;">
+                            <span>📄 ${creator.notasSubidas} Notas</span>
+                            <span>⭐ ${creator.calificacion}</span>
+                        </div>
+                    `;
+                    
+                    card.addEventListener('click', () => {
+                        window.location.href = `creator.html?id=${creator.id}`;
+                    });
+                    
+                    creatorsTrack.appendChild(card);
+                });
+            }, 1500);
+        }
+        
+        // Paywall Modal Logic
+        const btnDownload = document.getElementById('btn-test-download');
+        const modal = document.getElementById('paywall-modal');
+        
+        if(btnDownload && modal) {
+            btnDownload.addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+            
+            // Cerrar al hacer clic fuera
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Drag and Drop Logic + Upload Modal
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const uploadModal = document.getElementById('upload-modal');
+        const closeUploadBtn = document.getElementById('close-upload');
+        const btnSubmitUpload = document.getElementById('btn-submit-upload');
+        const btnCloseSuccess = document.getElementById('btn-close-success');
+        
+        const uploadForm = document.getElementById('upload-form');
+        const uploadProgress = document.getElementById('upload-progress');
+        const uploadSuccess = document.getElementById('upload-success');
+
+        if(dropZone && uploadModal && fileInput) {
+            // Prevenir comportamiento por defecto del navegador
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            // Efectos visuales de drag & drop
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, () => dropZone.classList.add('dragover'), false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, () => dropZone.classList.remove('dragover'), false);
+            });
+
+            // Manejar la caída del archivo
+            dropZone.addEventListener('drop', (e) => {
+                if (e.dataTransfer.files.length > 0) {
+                    const file = e.dataTransfer.files[0];
+                    openUploadModal(file.name);
+                }
+            }, false);
+            
+            // Alternativa con click (abre explorador de archivos)
+            dropZone.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', (e) => {
+                if(e.target.files.length > 0) {
+                    openUploadModal(e.target.files[0].name);
+                }
+            });
+
+            // Lógica del Dropdown Personalizado
+            const categoryDropdown = document.getElementById('category-dropdown');
+            const dropdownSelected = categoryDropdown.querySelector('.dropdown-selected');
+            const dropdownList = categoryDropdown.querySelector('.dropdown-list');
+            const dropdownItems = dropdownList.querySelectorAll('li');
+
+            dropdownSelected.addEventListener('click', () => {
+                categoryDropdown.classList.toggle('open');
+            });
+
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    dropdownSelected.innerText = item.innerText;
+                    dropdownSelected.dataset.value = item.innerText;
+                    categoryDropdown.classList.remove('open');
+                });
+            });
+
+            // Cerrar dropdown al clickear afuera
+            document.addEventListener('click', (e) => {
+                if (!categoryDropdown.contains(e.target)) {
+                    categoryDropdown.classList.remove('open');
+                }
+            });
+
+            function openUploadModal(filename) {
+                document.getElementById('upload-title').value = filename.replace(/\.[^/.]+$/, "");
+                uploadForm.style.display = 'block';
+                uploadProgress.style.display = 'none';
+                uploadSuccess.style.display = 'none';
+                uploadModal.style.display = 'flex';
+            }
+
+            const closeModals = () => uploadModal.style.display = 'none';
+            closeUploadBtn.addEventListener('click', closeModals);
+            btnCloseSuccess.addEventListener('click', closeModals);
+            
+            // Simular subida
+            btnSubmitUpload.addEventListener('click', () => {
+                uploadForm.style.display = 'none';
+                uploadProgress.style.display = 'block';
+                
+                setTimeout(() => {
+                    document.getElementById('upload-status-text').innerText = "Generando marca de agua...";
+                }, 1200);
+                
+                setTimeout(() => {
+                    uploadProgress.style.display = 'none';
+                    uploadSuccess.style.display = 'block';
+                }, 3000);
+            });
+        }
+
+
+        // Scroll Reveal Logic
+        const revealCards = document.querySelectorAll('.reveal-card');
+        if (revealCards.length > 0) {
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                let delay = 0;
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, delay);
+                        delay += 200; // Efecto cascada (0, 200, 400ms)
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, revealOptions);
+
+            revealCards.forEach(card => revealObserver.observe(card));
+        }
+
+        // Preview Modal Logic
+        const noteCards = document.querySelectorAll('.note-card');
+        const previewModal = document.getElementById('preview-modal');
+        const closePreviewBtn = document.getElementById('close-preview');
+        const btnUpgradePreview = document.getElementById('btn-upgrade-preview');
+        const pTitle = document.getElementById('preview-title');
+        const pTag = document.getElementById('preview-tag');
+        const pStats = document.getElementById('preview-stats');
+
+        if (previewModal) {
+            noteCards.forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    const titleEl = card.querySelector('h3');
+                    const tagEl = card.querySelector('.tag');
+                    
+                    if(titleEl && pTitle) pTitle.innerHTML = titleEl.innerHTML;
+                    if(tagEl && pTag) {
+                        pTag.style.display = 'inline-block';
+                        pTag.innerHTML = tagEl.innerHTML;
+                        pTag.className = tagEl.className;
+                    } else if(pTag) {
+                        pTag.style.display = 'none';
+                    }
+                    
+                    if(pStats) {
+                        const pages = Math.floor(Math.random() * 25) + 5;
+                        const size = (Math.random() * 4 + 0.5).toFixed(1);
+                        pStats.innerText = `${pages} páginas • ${size} MB`;
+                    }
+                    
+                    previewModal.style.display = 'flex';
+                });
+            });
+
+            closePreviewBtn.addEventListener('click', () => {
+                previewModal.style.display = 'none';
+            });
+
+            previewModal.addEventListener('click', (e) => {
+                if (e.target === previewModal) {
+                    previewModal.style.display = 'none';
+                }
+            });
+
+            if (btnUpgradePreview && modal) {
+                btnUpgradePreview.addEventListener('click', () => {
+                    previewModal.style.display = 'none';
+                    modal.style.display = 'flex'; // Abre el paywall original
+                });
+            }
+        }
+
+        // Search Logic
+        const searchInput = document.querySelector('.search-input');
+        const noteCardsToSearch = document.querySelectorAll('.featured-notes .note-card');
+        
+        if (searchInput && noteCardsToSearch.length > 0) {
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                noteCardsToSearch.forEach(card => {
+                    const titleEl = card.querySelector('h3');
+                    const tagEl = card.querySelector('.tag');
+                    const title = titleEl ? titleEl.innerText.toLowerCase() : '';
+                    const tag = tagEl ? tagEl.innerText.toLowerCase() : '';
+                    
+                    if (title.includes(term) || tag.includes(term)) {
+                        card.style.display = ''; // Restaurar display original
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+
+        // Auth Modal Logic
+        const authModal = document.getElementById('auth-modal');
+        const btnLoginNav = document.getElementById('btn-login-nav');
+        const closeAuth = document.getElementById('close-auth');
+        const btnTabLogin = document.getElementById('btn-tab-login');
+        const btnTabRegister = document.getElementById('btn-tab-register');
+        const authSubmitBtn = document.getElementById('auth-submit-btn');
+        const authForm = document.getElementById('auth-form');
+
+        if (authModal && btnLoginNav) {
+            btnLoginNav.addEventListener('click', (e) => {
+                e.preventDefault();
+                authModal.style.display = 'flex';
+            });
+
+            closeAuth.addEventListener('click', () => {
+                authModal.style.display = 'none';
+            });
+
+            authModal.addEventListener('click', (e) => {
+                if (e.target === authModal) {
+                    authModal.style.display = 'none';
+                }
+            });
+
+            btnTabLogin.addEventListener('click', () => {
+                btnTabLogin.classList.add('active');
+                btnTabRegister.classList.remove('active');
+                authSubmitBtn.innerText = 'INICIAR SESIÓN';
+            });
+
+            btnTabRegister.addEventListener('click', () => {
+                btnTabRegister.classList.add('active');
+                btnTabLogin.classList.remove('active');
+                authSubmitBtn.innerText = 'CREAR CUENTA';
+            });
+
+            authForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                authSubmitBtn.innerText = 'AUTENTICANDO...';
+                
+                // MOCK DE FIREBASE: Guardar sesión en localStorage
+                setTimeout(() => {
+                    localStorage.setItem('user_session_token', 'firebase_mock_token_12345');
+                    window.location.href = 'dashboard.html';
+                }, 1000);
+            });
+
+            // Si ya está logueado, cambiar botón del navbar y saltar el modal
+            if (localStorage.getItem('user_session_token')) {
+                const navBtn = document.getElementById('btn-login-nav');
+                if (navBtn) {
+                    navBtn.innerText = 'Ir a mi Panel';
+                    navBtn.onclick = (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        window.location.href = 'dashboard.html';
+                    };
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

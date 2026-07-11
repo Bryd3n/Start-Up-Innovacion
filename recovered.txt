@@ -1,0 +1,809 @@
+﻿Created At: 2026-07-09T20:49:17-04:00
+Completed At: 2026-07-09T20:49:17-04:00
+File Path: `file:///C:/Users/Samuel/Documents/Start-Up-Innovacion/menu-qr-web/styles.css`
+Total Lines: 864
+Total Bytes: 20576
+Showing lines 1 to 800
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: :root {
+2:     --bg-color: #0f172a;
+3:     --text-main: #f8fafc;
+4:     --text-muted: #94a3b8;
+5:     --primary: #4f46e5;
+6:     --primary-hover: #4338ca;
+7:     --secondary: #1e293b;
+8:     --gradient-start: #6366f1;
+9:     --gradient-end: #a855f7;
+10: }
+11: 
+12: * {
+13:     margin: 0;
+14:     padding: 0;
+15:     box-sizing: border-box;
+16:     font-family: 'Inter', sans-serif;
+17: }
+18: 
+19: body {
+20:     background-color: var(--bg-color);
+21:     color: var(--text-main);
+22:     line-height: 1.6;
+23:     overflow-x: hidden;
+24: }
+25: 
+26: /* Typography */
+27: h1 {
+28:     font-size: 3.5rem;
+29:     font-weight: 800;
+30:     line-height: 1.2;
+31:     margin-bottom: 1.5rem;
+32: }
+33: 
+34: h2 {
+35:     font-size: 2.5rem;
+36:     font-weight: 800;
+37:     margin-bottom: 2rem;
+38:     text-align: center;
+39: }
+40: 
+41: .text-gradient {
+42:     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+43:     -webkit-background-clip: text;
+44:     -webkit-text-fill-color: transparent;
+45: }
+46: 
+47: /* Navbar */
+48: .navbar {
+49:     display: flex;
+50:     justify-content: space-between;
+51:     align-items: center;
+52:     padding: 1.5rem 5%;
+53:     background: rgba(15, 23, 42, 0.8);
+54:     backdrop-filter: blur(10px);
+55:     position: fixed;
+56:     width: 100%;
+57:     top: 0;
+58:     z-index: 100;
+59:     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+60: }
+61: 
+62: .logo {
+63:     font-size: 1.5rem;
+64:     font-weight: 800;
+65:     letter-spacing: -1px;
+66: }
+67: 
+68: .logo span {
+69:     color: var(--primary);
+70: }
+71: 
+72: .nav-links {
+73:     display: flex;
+74:     list-style: none;
+75:     gap: 2rem;
+76: }
+77: 
+78: .nav-links a {
+79:     color: var(--text-muted);
+80:     text-decoration: none;
+81:     font-weight: 600;
+82:     transition: color 0.3s;
+83: }
+84: 
+85: .nav-links a:hover {
+86:     color: var(--text-main);
+87: }
+88: 
+89: /* Buttons */
+90: .btn {
+91:     display: inline-block;
+92:     padding: 0.8rem 1.5rem;
+93:     border-radius: 8px;
+94:     font-weight: 600;
+95:     text-decoration: none;
+96:     transition: all 0.3s ease;
+97:     cursor: pointer;
+98:     border: none;
+99: }
+100: 
+101: .btn-primary {
+102:     background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+103:     color: white;
+104:     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+105: }
+106: 
+107: .btn-primary:hover {
+108:     transform: translateY(-2px);
+109:     box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+110: }
+111: 
+112: .btn-secondary {
+113:     background: var(--secondary);
+114:     color: var(--text-main);
+115: }
+116: 
+117: .btn-secondary:hover {
+118:     background: #334155;
+119: }
+120: 
+121: .btn-outline {
+122:     border: 1px solid var(--text-muted);
+123:     color: var(--text-main);
+124: }
+125: 
+126: .btn-outline:hover {
+127:     border-color: var(--text-main);
+128: }
+129: 
+130: .btn-sm {
+131:     padding: 0.5rem 1rem;
+132:     font-size: 0.9rem;
+133:     background: var(--primary);
+134:     color: white;
+135:     border-radius: 6px;
+136:     margin-top: 1rem;
+137: }
+138: 
+139: .full-width {
+140:     width: 100%;
+141:     text-align: center;
+142: }
+143: 
+144: /* Hero Section */
+145: .hero {
+146:     display: flex;
+147:     align-items: center;
+148:     justify-content: space-between;
+149:     padding: 10rem 5% 5rem;
+150:     min-height: 100vh;
+151:     gap: 2rem;
+152: }
+153: 
+154: .hero-content {
+155:     flex: 1;
+156:     max-width: 600px;
+157: }
+158: 
+159: .badge {
+160:     display: inline-block;
+161:     padding: 0.4rem 1rem;
+162:     background: rgba(99, 102, 241, 0.1);
+163:     color: #a5b4fc;
+164:     border-radius: 20px;
+165:     font-size: 0.875rem;
+166:     font-weight: 600;
+167:     margin-bottom: 1.5rem;
+168:     border: 1px solid rgba(99, 102, 241, 0.2);
+169: }
+170: 
+171: .hero p {
+172:     color: var(--text-muted);
+173:     font-size: 1.2rem;
+174:     margin-bottom: 2.5rem;
+175: }
+176: 
+177: .hero-buttons {
+178:     display: flex;
+179:     gap: 1rem;
+180: }
+181: 
+182: .hero-image {
+183:     flex: 1;
+184:     display: flex;
+185:     justify-content: center;
+186:     position: relative;
+187: }
+188: 
+189: /* Glassmorphism Card Animation */
+190: .glass-card {
+191:     background: rgba(255, 255, 255, 0.03);
+192:     border: 1px solid rgba(255, 255, 255, 0.1);
+193:     border-radius: 16px;
+194:     padding: 1.5rem;
+195:     width: 320px;
+196:     backdrop-filter: blur(20px);
+197:     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+198:     animation: float 6s ease-in-out infinite;
+199:     position: relative;
+200: }
+201: 
+202: .glass-card::before {
+203:     content: '';
+204:     position: absolute;
+205:     top: -50px;
+206:     right: -50px;
+207:     width: 150px;
+208:     height: 150px;
+209:     background: var(--primary);
+210:     filter: blur(80px);
+211:     z-index: -1;
+212:     opacity: 0.5;
+213: }
+214: 
+215: .card-header {
+216:     display: flex;
+217:     gap: 0.5rem;
+218:     margin-bottom: 1.5rem;
+219: }
+220: 
+221: .dot {
+222:     width: 12px;
+223:     height: 12px;
+224:     border-radius: 50%;
+225: }
+226: .red { background: #ff5f56; }
+227: .yellow { background: #ffbd2e; }
+228: .green { background: #27c93f; }
+229: 
+230: .card-body h3 {
+231:     font-size: 1.1rem;
+232:     margin-bottom: 0.5rem;
+233: }
+234: 
+235: .card-body p {
+236:     font-size: 0.9rem;
+237:     margin-bottom: 1rem;
+238: }
+239: 
+240: .skeleton-line {
+241:     height: 8px;
+242:     background: rgba(255, 255, 255, 0.1);
+243:     border-radius: 4px;
+244:     margin-bottom: 0.5rem;
+245:     width: 100%;
+246: }
+247: .skeleton-line.short {
+248:     width: 60%;
+249: }
+250: 
+251: @keyframes float {
+252:     0% { transform: translateY(0px); }
+253:     50% { transform: translateY(-20px); }
+254:     100% { transform: translateY(0px); }
+255: }
+256: 
+257: /* Features */
+258: .features {
+259:     padding: 5rem 5%;
+260:     background: #0b1120;
+261: }
+262: 
+263: .feature-grid {
+264:     display: grid;
+265:     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+266:     gap: 2rem;
+267:     margin-top: 3rem;
+268: }
+269: 
+270: .feature-card {
+271:     background: var(--secondary);
+272:     padding: 2.5rem;
+273:     border-radius: 16px;
+274:     border: 1px solid rgba(255, 255, 255, 0.05);
+275:     transition: transform 0.3s;
+276: }
+277: 
+278: .feature-card:hover {
+279:     transform: translateY(-5px);
+280:     border-color: rgba(99, 102, 241, 0.3);
+281: }
+282: 
+283: .feature-card .icon {
+284:     font-size: 3rem;
+285:     margin-bottom: 1.5rem;
+286: }
+287: 
+288: .feature-card h3 {
+289:     margin-bottom: 1rem;
+290:     font-size: 1.5rem;
+291: }
+292: 
+293: .feature-card p {
+294:     color: var(--text-muted);
+295: }
+296: 
+297: /* Pricing */
+298: .pricing {
+299:     padding: 5rem 5%;
+300:     display: flex;
+301:     justify-content: center;
+302: }
+303: 
+304: .pricing-card {
+305:     background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+306:     border: 1px solid rgba(99, 102, 241, 0.3);
+307:     border-radius: 24px;
+308:     padding: 3rem;
+309:     max-width: 400px;
+310:     width: 100%;
+311:     position: relative;
+312:     overflow: hidden;
+313: }
+314: 
+315: .pricing-card::before {
+316:     content: '';
+317:     position: absolute;
+318:     top: 0;
+319:     left: 0;
+320:     width: 100%;
+321:     height: 4px;
+322:     background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+323: }
+324: 
+325: .pricing-card h2 {
+326:     text-align: left;
+327:     margin-bottom: 0.5rem;
+328: }
+329: 
+330: .price {
+331:     font-size: 4rem;
+332:     font-weight: 800;
+333:     margin-bottom: 1rem;
+334: }
+335: 
+336: .price span {
+337:     font-size: 1.2rem;
+338:     color: var(--text-muted);
+339:     font-weight: 400;
+340: }
+341: 
+342: .pricing-features {
+343:     list-style: none;
+344:     margin: 2rem 0;
+345: }
+346: 
+347: .pricing-features li {
+348:     margin-bottom: 1rem;
+349:     color: var(--text-main);
+350: }
+351: 
+352: /* Footer */
+353: footer {
+354:     text-align: center;
+355:     padding: 3rem;
+356:     color: var(--text-muted);
+357:     border-top: 1px solid rgba(255, 255, 255, 0.05);
+358: }
+359: 
+360: /* Responsive */
+361: @media (max-width: 768px) {
+362:     .hero {
+363:         flex-direction: column;
+364:         text-align: center;
+365:         padding-top: 8rem;
+366:     }
+367:     .hero-buttons {
+368:         justify-content: center;
+369:         flex-direction: column;
+370:     }
+371:     .nav-links {
+372:         display: none;
+373:     }
+374:     h1 {
+375:         font-size: 2.5rem;
+376:     }
+377: }
+378: 
+379: 
+380: ::-webkit-scrollbar-button {
+381:     display: none;
+382: }
+383: 
+384: /* Glassmorphism Carousel Buttons */
+385: .carousel-btn {
+386:     min-width: 40px;
+387:     height: 40px;
+388:     border-radius: 50%;
+389:     cursor: pointer;
+390:     display: flex;
+391:     align-items: center;
+392:     justify-content: center;
+393:     transition: all 0.3s ease;
+394:     
+395:     background: rgba(255, 255, 255, 0.05);
+396:     backdrop-filter: blur(10px);
+397:     -webkit-backdrop-filter: blur(10px);
+398:     border: 1px solid rgba(255, 255, 255, 0.15);
+399:     color: #ffffff;
+400:     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+401: }
+402: 
+403: .carousel-btn:hover {
+404:     background: rgba(138, 43, 226, 0.3);
+405:     border-color: rgba(138, 43, 226, 0.6);
+406: }
+407: 
+408: .notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
+409: 
+410: /* Premium Search Bar */
+411: .search-container {
+412:     display: flex;
+413:     justify-content: center;
+414:     width: 100%;
+415: }
+416: 
+417: .search-box {
+418:     display: flex;
+419:     align-items: center;
+420:     background: #0f111a;
+421:     border: 1px solid rgba(255, 255, 255, 0.3);
+422:     border-radius: 50px;
+423:     padding: 0.5rem 1rem;
+424:     width: 250px;
+425:     transition: all 0.3s ease;
+426: }
+427: 
+428: .search-box:focus-within {
+429:     border-color: #8A2BE2;
+430:     box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+431:     background: rgba(255, 255, 255, 0.08);
+432: }
+433: 
+434: .search-icon {
+435:     color: rgba(255, 255, 255, 0.5);
+436:     margin-right: 12px;
+437:     min-width: 20px;
+438:     transition: color 0.3s ease;
+439: }
+440: 
+441: .search-box:focus-within .search-icon {
+442:     color: #8A2BE2;
+443: }
+444: 
+445: .search-input {
+446:     background: transparent;
+447:     border: none;
+448:     color: white;
+449:     font-size: 0.95rem;
+450:     width: 100%;
+451:     outline: none;
+452: }
+453: 
+454: .search-input::placeholder {
+455:     color: rgba(255, 255, 255, 0.4);
+456: }
+457: .note-card { 
+458:     display: flex; gap: 1rem; align-items: center; padding: 1.2rem; 
+459:     background: rgba(138, 43, 226, 0.15); border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 16px; animation: none; 
+460:     min-width: 320px; flex: 0 0 auto; scroll-snap-align: start;
+461: }
+462: .note-info h3 { font-size: 1rem; word-break: break-all; margin-bottom: 0.3rem;}
+463: .note-card::before { display: none; }
+464: 
+465: .note-thumbnail { width: 80px; height: 110px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+466: .thumb-cyan { background: linear-gradient(135deg, #005f73, var(--color-cyan)); }
+467: .thumb-violet { background: linear-gradient(135deg, #3c096c, var(--color-violet)); }
+468: .thumb-yellow { background: linear-gradient(135deg, #b8860b, var(--color-yellow)); }
+469: .thumb-green { background: linear-gradient(135deg, #006400, var(--color-green)); }
+470: 
+471: .tag { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 12px; font-weight: 600; margin-right: 0.5rem;}
+472: .tag-blue { background: rgba(0, 123, 255, 0.2); color: #66b2ff; }
+473: .tag-green { background: rgba(0, 255, 127, 0.2); color: var(--color-green); }
+474: .tag-yellow { background: rgba(255, 215, 0, 0.2); color: var(--color-yellow); }
+475: .tag-purple { background: rgba(138, 43, 226, 0.2); color: #b784e6; }
+476: .tag-outline { border: 1px solid var(--text-muted); color: var(--text-muted); }
+477: 
+478: .stats { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; }
+479: 
+480: .creators-track { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+481: .creator-card { 
+482:     text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; animation: none; width: 100%; padding: 2rem;
+483:     transition: all 0.3s ease;
+484:     cursor: pointer;
+485: }
+486: .creator-card:hover { transform: scale(1.03); }
+487: 
+488: .creator-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--text-main); margin-bottom: 0.5rem; }
+489: .verified { color: var(--color-cyan); font-size: 1rem; }
+490: .creator-career { color: var(--color-cyan); font-weight: 500; }
+491: .creator-earning { font-size: 0.85rem; color: var(--text-muted); }
+492: 
+493: /* Creator Profile Specific */
+494: .creator-header {
+495:     text-align: center;
+496:     padding: 8rem 5% 3rem;
+497: }
+498: 
+499: .creator-avatar-large {
+500:     width: 150px;
+501:     height: 150px;
+502:     border-radius: 50%;
+503:     margin: 0 auto 1.5rem;
+504:     padding: 4px;
+505:     background: linear-gradient(135deg, var(--creator-theme), var(--color-violet));
+506:     box-shadow: 0 0 25px rgba(var(--creator-theme-rgb), 0.4);
+507: }
+508: 
+509: .creator-avatar-large img {
+510:     width: 100%;
+511:     height: 100%;
+512:     border-radius: 50%;
+513:     object-fit: cover;
+514:     border: 4px solid var(--bg-color);
+515: }
+516: 
+517: .creator-header h1 {
+518:     font-size: 2.5rem;
+519:     margin-bottom: 1rem;
+520:     display: flex;
+521:     align-items: center;
+522:     justify-content: center;
+523:     gap: 0.5rem;
+524: }
+525: 
+526: .creator-stats-panel {
+527:     display: flex;
+528:     justify-content: center;
+529:     gap: 2rem;
+530:     background: rgba(255, 255, 255, 0.05);
+531:     padding: 1rem 2rem;
+532:     border-radius: 50px;
+533:     display: inline-flex;
+534:     border: 1px solid rgba(255, 255, 255, 0.1);
+535: }
+536: 
+537: .stat-item {
+538:     font-weight: 600;
+539:     color: var(--text-main);
+540:     display: flex;
+541:     align-items: center;
+542:     gap: 0.5rem;
+543: }
+544: 
+545: .creator-layout {
+546:     display: grid;
+547:     grid-template-columns: 350px 1fr;
+548:     gap: 3rem;
+549:     padding: 0 5% 5rem;
+550:     max-width: 1200px;
+551:     margin: 0 auto;
+552: }
+553: 
+554: /* Left Panel */
+555: .creator-left-panel {
+556:     display: flex;
+557:     flex-direction: column;
+558:     gap: 2rem;
+559: }
+560: 
+561: .creator-about {
+562:     width: 100%;
+563:     animation: none;
+564:     box-shadow: none;
+565:     padding: 2rem;
+566: }
+567: .creator-about::before { display: none; }
+568: .creator-about h3 { margin-bottom: 1rem; color: var(--creator-theme); font-size: 1.2rem; }
+569: .creator-about p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+570: 
+571: .subscription-card {
+572:     background: linear-gradient(180deg, rgba(138, 43, 226, 0.2) 0%, rgba(var(--creator-theme-rgb), 0.1) 100%);
+573:     border: 1px solid rgba(var(--creator-theme-rgb), 0.3);
+574:     border-radius: 16px;
+575:     padding: 2rem;
+576:     text-align: center;
+577:     box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+578: }
+579: 
+580: .subscription-card h3 {
+581:     font-size: 1.5rem;
+582:     margin-bottom: 1.5rem;
+583:     color: #ffffff;
+584: }
+585: 
+586: .sub-benefits {
+587:     list-style: none;
+588:     margin-bottom: 2rem;
+589:     text-align: left;
+590: }
+591: 
+592: .sub-benefits li {
+593:     margin-bottom: 0.8rem;
+594:     font-size: 0.95rem;
+595:     color: var(--text-main);
+596: }
+597: 
+598: .subscription-card small {
+599:     color: #94a3b8;
+600:     font-size: 0.8rem;
+601: }
+602: 
+603: /* Right Panel */
+604: .creator-right-panel h3 {
+605:     font-size: 1.8rem;
+606:     margin-bottom: 2rem;
+607:     color: var(--text-main);
+608: }
+609: 
+610: .creator-notes-grid {
+611:     display: grid;
+612:     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+613:     gap: 1.5rem;
+614: }
+615: 
+616: .note-card-mini {
+617:     display: flex;
+618:     gap: 1rem;
+619:     align-items: center;
+620:     padding: 1rem;
+621:     background: rgba(255, 255, 255, 0.03);
+622:     border: 1px solid rgba(255, 255, 255, 0.1);
+623:     border-radius: 12px;
+624:     transition: all 0.3s ease;
+625:     cursor: pointer;
+626:     animation: none;
+627:     width: 100%;
+628: }
+629: .note-card-mini::before { display: none; }
+630: 
+631: .note-card-mini.dynamic-border:hover {
+632:     transform: scale(1.03);
+633:     box-shadow: 0 10px 30px rgba(var(--creator-theme-rgb), 0.15);
+634:     border-color: rgba(var(--creator-theme-rgb), 0.3);
+635: }
+636: 
+637: .note-card-mini .note-info h3 {
+638:     font-size: 1rem;
+639:     margin-bottom: 0.3rem;
+640:     word-break: break-all;
+641:     color: var(--text-main);
+642: }
+643: 
+644: .note-card-mini .stats {
+645:     margin-top: 0;
+646:     font-size: 0.85rem;
+647: }
+648: 
+649: .premium-locked {
+650:     filter: blur(4px);
+651:     opacity: 0.7;
+652: }
+653: 
+654: @media (max-width: 900px) {
+655:     .creator-layout {
+656:         grid-template-columns: 1fr;
+657:     }
+658: }
+659: .creator-earning { font-size: 0.85rem; color: var(--text-muted); }
+660: 
+661: /* Paywall Modal */
+662: .modal-backdrop {
+663:     position: fixed;
+664:     top: 0;
+665:     left: 0;
+666:     width: 100%;
+667:     height: 100%;
+668:     background: rgba(0, 0, 0, 0.6);
+669:     backdrop-filter: blur(4px);
+670:     -webkit-backdrop-filter: blur(4px);
+671:     display: flex;
+672:     justify-content: center;
+673:     align-items: center;
+674:     z-index: 1000;
+675: }
+676: 
+677: .modal-card {
+678:     background: #1a1d2d;
+679:     border-radius: 16px;
+680:     padding: 2.5rem 2rem;
+681:     max-width: 400px;
+682:     width: 90%;
+683:     text-align: center;
+684:     box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+685:     border: 1px solid rgba(255, 255, 255, 0.05);
+686:     display: flex;
+687:     flex-direction: column;
+688:     align-items: center;
+689:     gap: 1rem;
+690: }
+691: 
+692: .modal-icon {
+693:     width: 48px;
+694:     height: 48px;
+695:     color: #ffd700;
+696:     margin-bottom: 0.5rem;
+697: }
+698: 
+699: .modal-card h2 {
+700:     color: #ffffff;
+701:     font-weight: 600;
+702:     font-size: 1.5rem;
+703:     margin-bottom: 0;
+704: }
+705: 
+706: .modal-card p {
+707:     color: #94a3b8;
+708:     font-size: 0.95rem;
+709:     line-height: 1.5;
+710:     margin-bottom: 0.5rem;
+711: }
+712: 
+713: .modal-card small {
+714:     display: block;
+715:     margin-top: 1.5rem;
+716: }
+717: /* 1. Glass Card Overflow */
+718: .glass-card {
+719:     overflow: hidden;
+720: }
+721: 
+722: /* 2. Custom Dropdown (Premium Glassmorphism) */
+723: .custom-dropdown {
+724:     position: relative;
+725:     width: 260px;
+726:     font-size: 0.9rem;
+727:     font-weight: 500;
+728: }
+729: .dropdown-trigger {
+730:     background: rgba(255, 255, 255, 0.03);
+731:     backdrop-filter: blur(10px);
+732:     -webkit-backdrop-filter: blur(10px);
+733:     color: #ffffff;
+734:     border: 1px solid rgba(255, 255, 255, 0.1);
+735:     border-radius: 20px;
+736:     padding: 0.5rem 1.2rem;
+737:     display: flex;
+738:     justify-content: space-between;
+739:     align-items: center;
+740:     cursor: pointer;
+741:     transition: all 0.3s ease;
+742:     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+743: }
+744: .dropdown-trigger:hover {
+745:     background: rgba(255, 255, 255, 0.08);
+746:     border-color: rgba(var(--creator-theme-rgb, 255, 255, 255), 0.4);
+747:     box-shadow: 0 4px 20px rgba(var(--creator-theme-rgb, 0, 0, 0), 0.15);
+748: }
+749: .dropdown-menu {
+750:     position: absolute;
+751:     top: calc(100% + 10px);
+752:     left: 0;
+753:     width: 100%;
+754:     background: rgba(15, 23, 42, 0.85);
+755:     backdrop-filter: blur(15px);
+756:     -webkit-backdrop-filter: blur(15px);
+757:     border: 1px solid rgba(255, 255, 255, 0.1);
+758:     border-radius: 16px;
+759:     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+760:     list-style: none;
+761:     padding: 0.5rem;
+762:     margin: 0;
+763:     display: flex;
+764:     flex-direction: column;
+765:     gap: 2px;
+766:     opacity: 0;
+767:     visibility: hidden;
+768:     transform: translateY(-10px);
+769:     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+770:     z-index: 1000;
+771: }
+772: .custom-dropdown.active .dropdown-menu {
+773:     opacity: 1;
+774:     visibility: visible;
+775:     transform: translateY(0);
+776: }
+777: .dropdown-menu li {
+778:     padding: 0.7rem 1rem;
+779:     color: var(--text-muted);
+780:     cursor: pointer;
+781:     border-radius: 12px;
+782:     transition: all 0.2s ease;
+783:     font-size: 0.9rem;
+784: }
+785: .dropdown-menu li:hover {
+786:     background: rgba(var(--creator-theme-rgb, 255, 255, 255), 0.15);
+787:     color: #ffffff;
+788: }
+789: 
+790: /* 3. Glow Top (for cards and buttons) */
+791: .glow-top {
+792:     border-top: 2px solid var(--creator-theme, var(--color-cyan)) !important;
+793:     box-shadow: 0 -6px 15px -3px rgba(var(--creator-theme-rgb, 0, 245, 255), 0.4) !important;
+794: }
+795: 
+796: /* Update creator cards on hover to retain glow */
+797: .dynamic-creator-card:hover {
+798:     transform: scale(1.03);
+799:     box-shadow: 0 -6px 15px -3px rgba(var(--hover-color-rgb, 0, 245, 255), 0.6), 
+800:                 0 10px 30px rgba(var(--hover-color-rgb, 0, 245, 255), 0.3) !important;
+The above content does NOT show the entire file contents. If you need to view any lines of the file which were not shown to complete your task, call this tool again to view those lines.
+
