@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "slideshow": {
+      "source": "heygen-com/hyperframes",
+      "sourceType": "github",
+      "skillPath": "skills/slideshow/SKILL.md",
+      "computedHash": "b04dfc7f157e20c59e6efe2a34a7b531381a9bd7819604477f55258e592b0cd3"
+    }
+  }
+}

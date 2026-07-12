@@ -1,0 +1,9 @@
+{
+  "name": "menu-qr-express-pitch-deck",
+  "version": "1.0.0",
+  "description": "Pitch deck interactivo para Menu QR Express.",
+  "scripts": {
+    "dev": "npx hyperframes present ./composition",
+    "studio": "npx hyperframes preview ./composition"
+  }
+}

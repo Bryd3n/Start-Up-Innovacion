@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu QR Express - Pitch Deck</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap');
+    body, html {
+      margin: 0; padding: 0; width: 100%; height: 100%;
+      background: #09090b; font-family: 'Inter', sans-serif;
+      overflow: hidden; color: #fff;
+    }
+    .scene-frame {
+      position: absolute; top: 0; left: 0; width: 1920px; height: 1080px;
+      overflow: hidden; opacity: 0; visibility: hidden; pointer-events: none;
+      background: #09090b;
+    }
+    .bg-gradient {
+      position: absolute; width: 1200px; height: 1200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,0,0.15) 0%, rgba(9,9,11,0) 70%);
+      top: -300px; right: -300px; z-index: 0; pointer-events: none;
+    }
+    .clip {
+      position: absolute; inset: 0; padding: 120px 160px; box-sizing: border-box;
+      display: flex; flex-direction: column; justify-content: center; z-index: 1;
+    }
+    .clip-center { align-items: center; text-align: center; }
+    
+    h1 { font-size: 88px; font-weight: 800; margin: 0 0 24px; color: #FF6B00; letter-spacing: -2px; line-height: 1.1; }
+    h2 { font-size: 64px; font-weight: 800; margin: 0 0 40px; color: #FF6B00; letter-spacing: -1px; }
+    p { font-size: 40px; font-weight: 400; color: #a1a1aa; margin: 0 0 24px; line-height: 1.5; }
+    .highlight { color: #FF6B00; font-weight: 600; }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; width: 100%; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; width: 100%; align-items: start; }
+    .grid-image { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; width: 100%; align-items: center; height: 100%; }
+    
+    .box { 
+      background: rgba(255, 255, 255, 0.03); 
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      padding: 40px; border-radius: 24px; 
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 8px solid #FF6B00;
+      box-shadow: 0 24px 40px rgba(0,0,0,0.2);
+      display: flex; align-items: flex-start; gap: 32px;
+    }
+    .box-icon {
+      flex-shrink: 0; width: 64px; height: 64px; color: #FF6B00;
+      background: rgba(255, 107, 0, 0.1); padding: 16px; border-radius: 16px;
+    }
+    
+    .mockup-img {
+      width: 100%; height: auto; max-height: 700px; object-fit: cover; border-radius: 32px;
+      box-shadow: 0 32px 64px rgba(255, 107, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .mockup-phone {
+      width: 100%; height: 800px; object-fit: contain;
+      filter: drop-shadow(0 32px 64px rgba(255, 107, 0, 0.3));
+    }
+    
+    .tag {
+      background: rgba(255,107,0,0.1); color: #FF6B00; padding: 12px 24px;
+      border-radius: 100px; font-weight: 600; font-size: 24px;
+      display: inline-block; margin-bottom: 24px; border: 1px solid rgba(255,107,0,0.2);
+    }
+    
+    .plan-card {
+      background: linear-gradient(135deg, #FF6B00 0%, #e65c00 100%);
+      color: #111; padding: 56px; border-radius: 32px;
+      box-shadow: 0 32px 64px rgba(255,107,0,0.3); max-width: 700px; margin: 0 auto;
+    }
+    .box { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .box:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 32px 64px rgba(255, 107, 0, 0.1); }
+    
+    .plan-card { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .plan-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 48px 80px rgba(255, 107, 0, 0.4); }
+    
+    .mockup-img, .mockup-phone { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease; }
+    .mockup-img:hover, .mockup-phone:hover { transform: translateY(-8px) scale(1.03); filter: drop-shadow(0 40px 80px rgba(255, 107, 0, 0.4)); }
+  </style>
+</head>
+<body>
+  <script type="application/hyperframes-slideshow+json">
+    {
+      "slides": [
+        { "sceneId": "portada", "notes": "Bienvenidos a la presentación de Menu QR Express." },
+        { "sceneId": "problema", "notes": "Imprimir menús es lento y los PDFs son pesados.", "fragments": [11.0, 13.0, 16.0] },
+        { "sceneId": "solucion", "notes": "Una plataforma SaaS 100% móvil y fácil de usar." },
+        { "sceneId": "negocios", "notes": "Modelo SaaS de 3 niveles: Starter $29, Pro $79 y Elite $149. Diseñados para escalar con el restaurante." },
+        { "sceneId": "traccion", "notes": "Piloto con 5 restaurantes." },
+        { "sceneId": "mercado", "notes": "SAM: Restaurantes en la región.", "fragments": [51.0, 53.0, 56.0] },
+        { "sceneId": "equipo", "notes": "Equipo experto." },
+        { "sceneId": "busqueda", "notes": "Buscamos $50K por el 10% SAFE." }
+      ],
+      "slideSequences": []
+    }
+  </script>
+
+  <!-- Slide 1: Portada -->
+  <div id="scene-portada" class="scene-frame" data-composition-id="portada" data-start="0" data-duration="10" data-width="1920" data-height="1080">
+    <div class="bg-gradient"></div>
+    <section class="clip">
+      <div class="grid-image">
+        <div>
+          <div class="tag" data-anim>Menú Inteligente</div>
+          <h1 data-anim>Menu QR<br><span style="color:#fff">Express</span></h1>
+          <p data-anim style="font-size: 48px; max-width: 700px; color:#e4e4e7">Digitaliza la carta de tu restaurante en 5 minutos y moderniza la experiencia.</p>
+        </div>
+        <div data-anim style="perspective: 1000px;">
+          <img src="assets/wireframe_menu_qr.jpg" class="mockup-phone" alt="QR App Wireframe" style="transform: rotateY(-15deg) rotateX(5deg);">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Slide 2: Problema -->
+  <div id="scene-problema" class="scene-frame" data-composition-id="problema" data-start="10" data-duration="10" data-width="1920" data-height="1080">
+    <div class="bg-gradient" style="left: -300px; top: 300px;"></div>
+    <section class="clip">
+      <h2 data-anim>El problema actual</h2>
+      <div class="box" data-anim id="prob-1" style="margin-bottom: 24px;">
+        <svg class="box-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <p style="margin: 0; color:#fff">Imprimir y actualizar menús físicos es costoso, lento y anticuado.</p>
+      </div>
+      <div class="box" id="prob-2" style="opacity: 0; margin-bottom: 24px;">
+        <svg class="box-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+        <p style="margin: 0; color:#fff">Los archivos <strong>PDF</strong> genéricos son lentos, no responsivos y obligan a hacer zoom.</p>
+      </div>
+      <div class="box" id="prob-3" style="opacity: 0;">
+        <svg class="box-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+        <p style="margin: 0; color:#fff"><strong>70%</strong> de comensales prefiere su teléfono, pero odia lidiar con descargas de PDFs pesados.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Slide 3: Solucion -->
+  <div id="scene-solucion" class="scene-frame" data-composition-id="solucion" data-start="20" data-duration="10" data-width="1920" data-height="1080">
+    <div class="bg-gradient" style="top: auto; bottom: -300px; right: -300px;"></div>
+    <section class="clip">
+      <div class="grid-image" style="grid-template-columns: 0.9fr 1.1fr;">
+        <div data-anim style="perspective: 1000px;">
+          <img src="assets/wireframe_menu_manager.jpg" class="mockup-img" alt="Menu Manager Dashboard" style="transform: rotateY(15deg) rotateX(5deg); height: 600px;">
+        </div>
+        <div style="padding-left: 40px;">
+          <h2 data-anim style="margin-bottom: 24px;">La Solución Definitiva</h2>
+          <p data-anim>Una plataforma SaaS nativa y elegante que transforma la forma de pedir.</p>
+          <div class="box" data-anim style="padding: 32px; margin-top: 40px;">
+            <p style="font-size: 32px; margin:0; color:#fff"><strong>Para el Local:</strong> Panel intuitivo y precios en tiempo real.</p>
+          </div>
+          <div class="box" data-anim style="padding: 32px; margin-top: 24px;">
+            <p style="font-size: 32px; margin:0; color:#fff"><strong>Para el Cliente:</strong> QR veloz y un catálogo interactivo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Slide 4: Modelo de Negocios -->
+  <div id="scene-negocios" class="scene-frame" data-composition-id="negocios" data-start="30" data-duration="10" data-width="1920" data-height="1080">
+    <div class="bg-gradient" style="left: -300px; top: -300px;"></div>
+    <section class="clip">
+      <div class="grid-image" style="grid-template-columns: 1fr 1fr;">
+        <div>
+          <h2 data-anim style="margin-bottom: 24px;">Modelo de Negocios</h2>
+          <p data-anim style="font-size: 40px; margin-bottom: 48px;">Suscripción predecible escalonada para cada tamaño de negocio.</p>
+          
+          <div data-anim style="margin-bottom: 32px; border-left: 4px solid #FF6B00; padding-left: 24px;">
+            <strong style="font-size: 40px; color:#fff;">Starter <span style="color:#FF6B00;">$29/mo</span></strong>
+            <p style="font-size: 28px; margin-top:8px;">Para locales independientes iniciando su digitalización.</p>
+          </div>
+          
+          <div data-anim style="margin-bottom: 32px; border-left: 4px solid #FF6B00; padding-left: 24px;">
+            <strong style="font-size: 40px; color:#fff;">Pro <span style="color:#FF6B00;">$79/mo</span></strong>
+            <p style="font-size: 28px; margin-top:8px;">Para restaurantes establecidos con alto volumen.</p>
+          </div>
+          
+          <div data-anim style="margin-bottom: 40px; border-left: 4px solid #FF6B00; padding-left: 24px;">
+            <strong style="font-size: 40px; color:#fff;">Elite <span style="color:#FF6B00;">$149/mo</span></strong>
+            <p style="font-size: 28px; margin-top:8px;">Para cadenas y operaciones de alta demanda.</p>
+          </div>
+          
+          <p data-anim style="margin-top: 24px; font-weight:600; color:#fff; font-size: 32px; background: rgba(255,107,0,0.1); padding: 16px 24px; border-radius: 12px; display: inline-block;">🎁 Planes con prueba gratuita para facilitar la adopción.</p>
+        </div>
+        <div data-anim style="perspective: 1000px;">
+          <img src="assets/wireframe_landing_page.jpg" class="mockup-img" alt="Landing Page Pricing" style="transform: rotateY(-10deg) rotateX(5deg); height: 750px; object-position: center bottom;">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Slide 5: Tracción -->
+  <div id="scene-traccion" class="scene-frame" data-composition-id="traccion" data-start="40" data-duration="10" data-width="1920" data-height="1080">
+    <div class="bg-gradient"></div>
+    <section class="clip">
+      <h2 data-anim>Tracción e Interés Real</h2>
+      <div class="grid-2" style="margin-top:40px;">
+        <div data-anim style="text-align:center;">
+          <div style="width: 280px; height: 280px; border-radius: 50%; border: 16px solid #FF6B00; display:flex; align-items:center; justify-content:center; margin: 0 auto 32px; box-shadow: 0 0 64px rgba(255,107,0,0.3);">
+            <span style="font-size: 100px; font-weight:800; color:#fff;">80%</span>
+          </div>
+          <p style="color:#fff;">De los dueños encuestados pagarían la cuota tras validar la propuesta inicial.</p>
+        </div>
+        <div>
+          <div class="box" data-anim style="margin-bottom:24px;">
+            <svg class="box-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <p style="margin:0; color:#fff"><strong>Prototipo 100% terminado</strong> y operativo.</p>
+          </div>
+          <div class="box" data-anim style="margin-bottom:24px;">
+            <svg class="box-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+            <p style="margin:0; color:#fff"><strong>Piloto Beta</strong> lanzado con 5 restaurantes activos.</p>
+          </div>
+          <div class="box" data-anim>
+            <svg class="box-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <p style="margin:0; color:#fff">Ahorro drástico validado en <strong>costos de imprenta</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Slide 6: Mercado -->
+  <div id="scene-mercado" class="scene-frame" data-composition-id="mercado" data-start="50" data-duration="10" data-width="1920" data-height="1080">
+    <div class="bg-gradient" style="left: -300px; bottom: -300px; top:auto;"></div>
+    <section class="clip">
+      <h2 data-anim>Mercado y Visión</h2>
+      <div class="box" data-anim id="mkt-1" style="margin-bottom: 24px;">
+        <p style="margin: 0;"><strong class="highlight" style="font-size:48px;">TAM:</strong><br><span style="color:#fff">La enorme industria global de tecnología para Food & Beverage.</span></p>
+      </div>
+      <div class="box" id="mkt-2" style="opacity: 0; margin-bottom: 24px;">
+        <p style="margin: 0;"><strong class="highlight" style="font-size:48px;">SAM:</strong><br><span style="color:#fff">Miles de restaurantes regionales con infraestructura POS básica e internet.</span></p>
+      </div>
+      <div class="box" id="mkt-3" style="opacity: 0; margin-bottom: 40px;">
+        <p style="margin: 0;"><strong class="highlight" style="font-size:48px;">SOM:</strong><br><span style="color:#fff">Cadenas locales y negocios independientes urgidos de abandonar el PDF.</span></p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Slide 7: Equipo -->
+  <div id="scene-equipo" class="scene-frame" data-composition-id="equipo" data-start="60" data-duration="10" data-width="1920" data-height="1080">
+    <div class="bg-gradient" style="top: -200px; left: 50%; transform: translateX(-50%); width:1600px;"></div>
+    <section class="clip clip-center">
+      <h2 data-anim>El Equipo Ideal</h2>
+      <p data-anim style="font-size: 40px; max-width: 1400px; margin-bottom:64px; color:#fff;">Tenemos el mix técnico y comercial para convertirnos en el estándar.</p>
+      <div style="display: flex; gap: 40px; justify-content: center; width:100%;">
+        <div class="box" data-anim style="flex:1; flex-direction:column; align-items:center; text-align:center;">
+          <div style="width:120px; height:120px; border-radius:50%; background:#FF6B00; margin-bottom:16px; display:flex; align-items:center; justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 72px; height: 72px; color: #111;">
+              <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0zM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <strong style="font-size:40px; color:#fff;">Brayan</strong><br><span class="highlight" style="font-size:32px;">Full Stack Dev</span>
+        </div>
+        <div class="box" data-anim style="flex:1; flex-direction:column; align-items:center; text-align:center;">
+          <div style="width:120px; height:120px; border-radius:50%; background:#FF6B00; margin-bottom:16px; display:flex; align-items:center; justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 72px; height: 72px; color: #111;">
+              <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0zM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <strong style="font-size:40px; color:#fff;">Samuel Silva</strong><br><span class="highlight" style="font-size:32px;">UX/UI Lead</span>
+        </div>
+        <div class="box" data-anim style="flex:1; flex-direction:column; align-items:center; text-align:center;">
+          <div style="width:120px; height:120px; border-radius:50%; background:#FF6B00; margin-bottom:16px; display:flex; align-items:center; justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 72px; height: 72px; color: #111;">
+              <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0zM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <strong style="font-size:40px; color:#fff;">Luis Rojas</strong><br><span class="highlight" style="font-size:32px;">Arquitecto Cloud</span>
+        </div>
+        <div class="box" data-anim style="flex:1; flex-direction:column; align-items:center; text-align:center;">
+          <div style="width:120px; height:120px; border-radius:50%; background:#FF6B00; margin-bottom:16px; display:flex; align-items:center; justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width: 72px; height: 72px; color: #111;">
+              <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0zM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <strong style="font-size:40px; color:#fff;">Jebel Ruiz</strong><br><span class="highlight" style="font-size:32px;">Ventas B2B</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Slide 8: Lo que Buscamos -->
+  <div id="scene-busqueda" class="scene-frame" data-composition-id="busqueda" data-start="70" data-duration="10" data-width="1920" data-height="1080">
+    <div class="bg-gradient" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 2000px; height: 2000px;"></div>
+    <section class="clip clip-center">
+      <div class="tag" data-anim>Inversión Semilla</div>
+      <h2 data-anim style="font-size: 80px;">El Ask</h2>
+      <div data-anim style="background: rgba(255,107,0,0.1); padding: 40px; border-radius: 20px; border: 2px solid #FF6B00; display: inline-block; margin-bottom: 64px;">
+        <h1 style="color:#FF6B00; margin:0; font-size:100px;">$50,000 USD</h1>
+        <p style="color:#fff; margin: 16px 0 0; font-size: 40px; font-weight:600;">A través de Notas Convertibles (SAFE, 10%)</p>
+      </div>
+      
+      <div class="grid-3" style="max-width: 1600px; text-align: left; margin: 0 auto; align-items: stretch;">
+        <div class="box" data-anim style="flex-direction:column; padding: 32px;">
+          <strong class="highlight" style="font-size:40px;">40% Desarrollo ⚙️</strong>
+          <p style="font-size: 24px; color:#fff; margin-top:16px;">Implementación de pagos directo desde el QR e integraciones POS.</p>
+        </div>
+        <div class="box" data-anim style="flex-direction:column; padding: 32px;">
+          <strong class="highlight" style="font-size:40px;">40% Mkt & Ventas 🚀</strong>
+          <p style="font-size: 24px; color:#fff; margin-top:16px;">Adquisición B2B para golpear la meta de 500 locales en 12 meses.</p>
+        </div>
+        <div class="box" data-anim style="flex-direction:column; padding: 32px;">
+          <strong class="highlight" style="font-size:40px;">20% Ops & Nube ☁️</strong>
+          <p style="font-size: 24px; color:#fff; margin-top:16px;">Costos operativos e infraestructura escalable en la nube.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="root" data-composition-id="root" data-start="0" data-duration="80" data-width="1920" data-height="1080" style="display:none;"></div>
+  
+  <script>
+    (function () {
+      window.__timelines = window.__timelines || {};
+      var tl = gsap.timeline({ paused: true });
+      tl.to(document.getElementById("root"), { duration: 80, x: 0 }); 
+      window.__timelines["root"] = tl;
+    })();
+
+    (function () {
+      var scenes = [
+        { id: "scene-portada", start: 0, end: 10 },
+        { id: "scene-problema", start: 10, end: 20 },
+        { id: "scene-solucion", start: 20, end: 30 },
+        { id: "scene-negocios", start: 30, end: 40 },
+        { id: "scene-traccion", start: 40, end: 50 },
+        { id: "scene-mercado", start: 50, end: 60 },
+        { id: "scene-equipo", start: 60, end: 70 },
+        { id: "scene-busqueda", start: 70, end: 80 }
+      ];
+
+      var fragments = [
+        { time: 13.0, id: "prob-2", revealed: false, scene: "scene-problema" },
+        { time: 16.0, id: "prob-3", revealed: false, scene: "scene-problema" },
+        { time: 53.0, id: "mkt-2", revealed: false, scene: "scene-mercado" },
+        { time: 56.0, id: "mkt-3", revealed: false, scene: "scene-mercado" }
+      ];
+
+      var lastActiveId = null;
+
+      function fireEntrance(el) {
+        var animEls = el.querySelectorAll("[data-anim]");
+        if(animEls.length) {
+          gsap.fromTo(animEls, 
+            { opacity: 0, y: 40 }, 
+            { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", overwrite: true }
+          );
+        }
+      }
+
+      function revealFragment(id) {
+        var el = document.getElementById(id);
+        if(el) {
+          gsap.fromTo(el, 
+            { opacity: 0, scale: 0.95 }, 
+            { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)", overwrite: true }
+          );
+        }
+      }
+
+      function updateVisibility(t) {
+        for (var i = 0; i < scenes.length; i++) {
+          var s = scenes[i];
+          var el = document.getElementById(s.id);
+          if (!el) continue;
+          
+          var active = t >= s.start && t < s.end;
+          el.style.opacity = active ? "1" : "0";
+          el.style.visibility = active ? "visible" : "hidden";
+          el.style.pointerEvents = active ? "auto" : "none";
+
+          if (active && lastActiveId !== s.id) {
+            lastActiveId = s.id;
+            for (var f = 0; f < fragments.length; f++) {
+              if (fragments[f].scene === s.id) {
+                fragments[f].revealed = false;
+                var fEl = document.getElementById(fragments[f].id);
+                if(fEl) gsap.set(fEl, { opacity: 0, clearProps: "transform" });
+              }
+            }
+            fireEntrance(el);
+          }
+        }
+
+        for (var f = 0; f < fragments.length; f++) {
+          if (!fragments[f].revealed && t >= fragments[f].time) {
+            fragments[f].revealed = true;
+            revealFragment(fragments[f].id);
+          }
+        }
+      }
+
+      window.__hfSetTime = updateVisibility;
+      updateVisibility(0);
+
+      var root = window.__timelines["root"];
+      if (root) {
+        root.eventCallback("onUpdate", function () {
+          updateVisibility(root.time());
+        });
+      }
+
+      var postScenes = [
+        { id: "portada", start: 0, duration: 10 },
+        { id: "problema", start: 10, duration: 10 },
+        { id: "solucion", start: 20, duration: 10 },
+        { id: "negocios", start: 30, duration: 10 },
+        { id: "traccion", start: 40, duration: 10 },
+        { id: "mercado", start: 50, duration: 10 },
+        { id: "equipo", start: 60, duration: 10 },
+        { id: "busqueda", start: 70, duration: 10 }
+      ];
+
+      function postTimeline() {
+        try {
+          parent.postMessage({
+            source: "hf-preview",
+            type: "timeline",
+            durationInFrames: 80 * 30,
+            scenes: postScenes
+          }, "*");
+        } catch(e) {}
+      }
+
+      if (document.readyState === "complete") {
+        setTimeout(postTimeline, 300);
+      } else {
+        window.addEventListener("load", function () {
+          setTimeout(postTimeline, 300);
+        });
+      }
+
+      window.addEventListener("message", function(e) {
+        if (!e.data) return;
+        var t = e.data.time != null ? e.data.time : e.data.currentTime;
+        if (typeof t === "number") {
+          var rootTl = window.__timelines["root"];
+          if (rootTl) {
+            rootTl.time(t);
+          } else if (typeof window.__hfSetTime === 'function') {
+            window.__hfSetTime(t);
+          }
+        }
+      });
+    })();
+  </script>
+
+
+</body>
+</html>
