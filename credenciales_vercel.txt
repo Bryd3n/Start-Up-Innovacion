@@ -1,0 +1,10 @@
+# Copia todo este texto y pégalo directamente en la sección "Environment Variables" de Vercel.
+# Vercel detectará automáticamente cada clave y valor.
+
+NEXT_PUBLIC_SUPABASE_URL=https://rxhbqfsdtcuuiqjatmsz.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4aGJxZnNkdGN1dWlxamF0bXN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM4OTY3MTYsImV4cCI6MjA5OTQ3MjcxNn0.SPFWZKejZawbFJkArM8AogBCeqMRRGkVB43kkRMZbgo
+
+VITE_SUPABASE_URL=https://rxhbqfsdtcuuiqjatmsz.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ4aGJxZnNkdGN1dWlxamF0bXN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM4OTY3MTYsImV4cCI6MjA5OTQ3MjcxNn0.SPFWZKejZawbFJkArM8AogBCeqMRRGkVB43kkRMZbgo
+
+DATABASE_URL="postgresql://postgres:Bra32015527%40%40@db.rxhbqfsdtcuuiqjatmsz.supabase.co:5432/postgres"
