@@ -594,6 +594,8 @@
         </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-init.js"></script>
     <script>
         const menuLinks = document.querySelectorAll('.sidebar-menu a');
         const sections = document.querySelectorAll('.dashboard-content section');
@@ -632,12 +634,25 @@
         // Logout Logic
         const btnLogout = document.getElementById('btn-logout');
         if(btnLogout) {
-            btnLogout.addEventListener('click', (e) => {
+            btnLogout.addEventListener('click', async (e) => {
                 e.preventDefault();
+                await supabase.auth.signOut();
                 localStorage.removeItem('user_session_token');
                 window.location.replace('index.html');
             });
         }
+
+        // Protect Route
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            if (!session && !localStorage.getItem('user_session_token')) {
+                window.location.replace('index.html');
+            } else if (session) {
+                const headerSpan = document.querySelector('.header-actions span');
+                if (headerSpan && session.user.email) {
+                    headerSpan.innerText = 'Hola, ' + session.user.email.split('@')[0];
+                }
+            }
+        });
     </script>
 </body>
 </html>

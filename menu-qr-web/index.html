@@ -322,6 +322,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-init.js"></script>
     <script src="data.js"></script>
 
     <!-- Auth Modal (Login/Register) -->
@@ -666,29 +668,61 @@
                 authSubmitBtn.innerText = 'CREAR CUENTA';
             });
 
-            authForm.addEventListener('submit', (e) => {
+            authForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 authSubmitBtn.innerText = 'AUTENTICANDO...';
                 
-                // MOCK DE FIREBASE: Guardar sesión en localStorage
-                setTimeout(() => {
-                    localStorage.setItem('user_session_token', 'firebase_mock_token_12345');
-                    window.location.href = 'dashboard.html';
-                }, 1000);
+                const email = authForm.querySelector('input[type="email"]').value;
+                const password = authForm.querySelector('input[type="password"]').value;
+                const isLogin = btnTabLogin.classList.contains('active');
+                
+                try {
+                    let authResponse;
+                    if (isLogin) {
+                        authResponse = await supabase.auth.signInWithPassword({ email, password });
+                    } else {
+                        authResponse = await supabase.auth.signUp({ email, password });
+                    }
+                    
+                    if (authResponse.error) {
+                        alert('Error: ' + authResponse.error.message);
+                        authSubmitBtn.innerText = isLogin ? 'INICIAR SESIÓN' : 'CREAR CUENTA';
+                    } else {
+                        if (authResponse.data.session) {
+                            localStorage.setItem('user_session_token', authResponse.data.session.access_token);
+                        }
+                        window.location.href = 'dashboard.html';
+                    }
+                } catch (err) {
+                    alert('Error de conexión');
+                    authSubmitBtn.innerText = isLogin ? 'INICIAR SESIÓN' : 'CREAR CUENTA';
+                }
             });
 
-            // Si ya está logueado, cambiar botón del navbar y saltar el modal
-            if (localStorage.getItem('user_session_token')) {
-                const navBtn = document.getElementById('btn-login-nav');
-                if (navBtn) {
-                    navBtn.innerText = 'Ir a mi Panel';
-                    navBtn.onclick = (e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        window.location.href = 'dashboard.html';
-                    };
-                }
+            const googleBtn = document.querySelector('.social-login-btn');
+            if (googleBtn) {
+                googleBtn.addEventListener('click', async () => {
+                    await supabase.auth.signInWithOAuth({
+                        provider: 'google',
+                        options: { redirectTo: window.location.origin + '/dashboard.html' }
+                    });
+                });
             }
+
+            // Si ya está logueado, cambiar botón del navbar y saltar el modal
+            supabase.auth.getSession().then(({ data: { session } }) => {
+                if (session || localStorage.getItem('user_session_token')) {
+                    const navBtn = document.getElementById('btn-login-nav');
+                    if (navBtn) {
+                        navBtn.innerText = 'Ir a mi Panel';
+                        navBtn.onclick = (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.location.href = 'dashboard.html';
+                        };
+                    }
+                }
+            });
         }
 
     </script>
