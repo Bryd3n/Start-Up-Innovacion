@@ -131,16 +131,37 @@ function Landing() {
           viewport={{ once: true }}
           className="pricing-card"
         >
-          <h2>Plan Pro Restaurante</h2>
-          <div className="price">$19 <span>/ mensual</span></div>
-          <p>Todo lo que necesitas para digitalizar tu atención.</p>
-          <ul className="pricing-features">
-            <li><CheckCircle2 size={18} color="#f97316"/> Platillos y categorías ilimitadas</li>
-            <li><CheckCircle2 size={18} color="#f97316"/> Código QR de alta resolución</li>
-            <li><CheckCircle2 size={18} color="#f97316"/> Panel de administración intuitivo</li>
-            <li><CheckCircle2 size={18} color="#f97316"/> Soporte prioritario 24/7</li>
-          </ul>
-          <Link to="/register" className="btn btn-primary full-width" style={{ textAlign: 'center' }}>Comenzar Prueba Gratis</Link>
+          <h2>Starter</h2>
+          <div className="price">$29 <span>/ mensual</span></div>
+          <p>Para locales independientes iniciando su digitalización.</p>
+          <Link to="/register" className="btn btn-primary full-width" style={{ textAlign: 'center', marginTop: '2rem' }}>Comenzar</Link>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="pricing-card"
+          style={{ transform: 'scale(1.05)', zIndex: 1, border: '1px solid var(--primary)' }}
+        >
+          <h2>Pro</h2>
+          <div className="price">$79 <span>/ mensual</span></div>
+          <p>Para restaurantes establecidos con alto volumen.</p>
+          <Link to="/register" className="btn btn-primary full-width" style={{ textAlign: 'center', marginTop: '2rem' }}>Comenzar Prueba Gratis</Link>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="pricing-card"
+        >
+          <h2>Elite</h2>
+          <div className="price">$149 <span>/ mensual</span></div>
+          <p>Para cadenas y operaciones de alta demanda.</p>
+          <Link to="/register" className="btn btn-primary full-width" style={{ textAlign: 'center', marginTop: '2rem' }}>Contactar Ventas</Link>
         </motion.div>
       </section>
 

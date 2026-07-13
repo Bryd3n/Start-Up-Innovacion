@@ -386,6 +386,8 @@ h2 {
   padding: 8rem 5%;
   display: flex;
   justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
   position: relative;
 }
 
